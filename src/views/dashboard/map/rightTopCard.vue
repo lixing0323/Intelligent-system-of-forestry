@@ -38,11 +38,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~@/styles/element-variables.scss";
   .input-card {
     background: rgba(46, 53, 71, 0.5);
     background-clip: border-box;
     border-width: 0;
-    color: #7BAACB;
+    color: $--color-font;
     border-radius: 0.4rem;
     display: block;
     padding: 20px;

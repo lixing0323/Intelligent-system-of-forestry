@@ -80,7 +80,6 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
       const that = this
       map = new AMap.Map(this.id, {
         resizeEnable: true,
-        center: [108.947044, 35.51445], //地图中心点
         keyboardEnable: false,
         mapStyle: "amap://styles/grey",
         pitch: 0,
@@ -102,6 +101,8 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
       this.disProvince.setMap(map);
       // marker会影响zoom初始化，因此需要重新设置
       map.setZoom(6.5)
+      // 省市区范围图会影响中心点设置，因此要重新设置
+      map.setCenter([108.947044, 35.98445])
     },
     created() {
       this.rightTopLoading = true
