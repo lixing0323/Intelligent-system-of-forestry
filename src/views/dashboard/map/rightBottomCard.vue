@@ -1,13 +1,16 @@
 <template>
   <div class="input-card" :style="{right:'3%', bottom: '3%', width: '400px', height: '330px' }">
-    <div class="title">碳汇监测样地</div>
-    <el-radio-group v-model="radio" class="tree-check-radio">
-      <el-radio v-for="(l, index) in labels" :key="index" :label="l">{{ l }}</el-radio>
-    </el-radio-group>
-    <div class="progress-div">
-      <div class="right-title">碳汇量(吨)</div>
-      <progress-line v-for="(item, index) in items" :key="index" :title="item.title" :value="item.value" />
-    </div>
+    <dv-loading v-if="cardLoading">加载中</dv-loading>
+    <template v-if="!cardLoading">
+      <div class="title">碳汇监测样地</div>
+      <el-radio-group v-model="radio" class="tree-check-radio">
+        <el-radio v-for="(l, index) in labels" :key="index" :label="l">{{ l }}</el-radio>
+      </el-radio-group>
+      <div class="progress-div">
+        <div class="right-title">碳汇量(吨)</div>
+        <progress-line v-for="(item, index) in items" :key="index" :title="item.title" :value="item.value" />
+      </div>
+    </template>
   </div>
 </template>
 
@@ -17,6 +20,10 @@ import ProgressLine from './compoennts/progress'
 export default {
   components: { ProgressLine },
   props: {
+    cardLoading: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {

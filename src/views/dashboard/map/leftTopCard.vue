@@ -1,7 +1,11 @@
 <template>
   <div class="input-card" :style="{ left:'3%', top: '12%', width: '400px', height: '230px' }">
-    <div class="title">面积占比</div>
-    <pie-chart :id="'area'" ref="eChart" :chart-data="data" class="pie" />
+    <dv-loading v-if="cardLoading">加载中</dv-loading>
+    <template v-if="!cardLoading">
+      <div class="title">面积占比</div>
+      <pie-chart :id="'area'" ref="eChart" :chart-data="data" class="pie" />
+    </template>
+
   </div>
 </template>
 
@@ -11,6 +15,10 @@ import PieChart from './compoennts/pie'
 export default {
   components: { PieChart },
   props: {
+    cardLoading: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {

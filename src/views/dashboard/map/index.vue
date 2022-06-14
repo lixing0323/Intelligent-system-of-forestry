@@ -13,10 +13,10 @@
     </div>
 
     <middle-top-card :sub-title="cityName" />
-    <left-top-card />
-    <left-bottom-card />
+    <left-top-card :card-loading="rightTopLoading" />
+    <left-bottom-card :card-loading="rightTopLoading" />
     <right-top-card :card-loading="rightTopLoading" :forestry="forestry" />
-    <right-bottom-card />
+    <right-bottom-card :card-loading="rightTopLoading" />
   </div>
 </template>
 
