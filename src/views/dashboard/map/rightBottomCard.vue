@@ -34,13 +34,13 @@ export default {
   },
   created() {
     this.items = [
-      { title: '澄城县壶梯山', value: 11312 },
-      { title: '监测点2', value: 10000 },
-      { title: '监测点3', value: 9600 },
-      { title: '监测点4', value: 8121 },
-      { title: '监测点5', value: 7862 },
-      { title: '监测点10', value: 5023 },
-      { title: '监测点11', value: 3878 }
+      { title: '澄城壶梯山', value: 11312 },
+      { title: '澄城樊家川', value: 10000 },
+      { title: '澄城邓母', value: 9600 },
+      { title: '澄城阿銮寨', value: 8121 },
+      { title: '澄城南社', value: 7862 },
+      { title: '澄城团结', value: 5023 },
+      { title: '澄城权家河', value: 3878 }
     ]
   },
   methods: {
