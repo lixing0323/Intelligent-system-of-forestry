@@ -76,41 +76,47 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
     },
     watch: {},
     mounted() {
-      // 新建地图
-      const that = this
-      map = new AMap.Map(this.id, {
-        resizeEnable: true,
-        keyboardEnable: false,
-        mapStyle: "amap://styles/grey",
-        pitch: 0,
-        viewMode: '3D', // 地图模式
-      });
-      map.on('click', function(e) {
-        // 拾取所在位置的行政区
-        const props = that.disProvince.getDistrictByContainerPos(e.pixel)
-        that.cityName = props.NAME_CHN
-        const msg = `经度=${e.lnglat.getLng()}纬度=${e.lnglat.getLat()}地址：${props}`
-        console.log(msg)
-        // that.$message.success({ message: msg, duration: 5000 })
-      });
-      map.clearMap();
-      // 设置标记点
-      this.setMarkers()
-      // 陕西省绘图
-      this.initProvince();
-      this.disProvince.setMap(map);
-      // marker会影响zoom初始化，因此需要重新设置
-      map.setZoom(6.5)
-      // 省市区范围图会影响中心点设置，因此要重新设置
-      map.setCenter([108.947044, 35.98445])
-    },
-    created() {
       this.rightTopLoading = true
+      this.createMap()
       setInterval(() => {
         this.getData()
       }, 2000)
     },
+    created() {
+    },
     methods: {
+      // 新建地图
+      createMap() {
+        const that = this
+        map = new AMap.Map(this.id, {
+          resizeEnable: true,
+          keyboardEnable: false,
+          mapStyle: "amap://styles/grey",
+          pitch: 0,
+          viewMode: '3D', // 地图模式
+        });
+        map.on('click', function(e) {
+          // 拾取所在位置的行政区
+          const props = that.disProvince.getDistrictByContainerPos(e.pixel)
+          that.cityName = props.NAME_CHN
+          const msg = `经度=${e.lnglat.getLng()}纬度=${e.lnglat.getLat()}地址：${props}`
+          console.log(msg)
+          // that.$message.success({ message: msg, duration: 5000 })
+        });
+        map.clearMap();
+      },
+      // 配置地图数据
+      setMapData() {
+        // 设置标记点
+        this.setMarkers()
+        // 陕西省绘图
+        this.initProvince();
+        this.disProvince.setMap(map);
+        // marker会影响zoom初始化，因此需要重新设置
+        map.setZoom(6.5)
+        // 省市区范围图会影响中心点设置，因此要重新设置
+        map.setCenter([108.947044, 35.98445])
+      },
       // 新建多个标记 自定义 image = require('@/assets/map/red.png')
       setMarkers() {
         const that = this
@@ -195,14 +201,13 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
           this.$message({ message: `城市数据还未返回或者数据错误，请稍后再点击`, duration: 1500, type: 'error' })
         }
       },
+      // 获取数据
       getData() {
-        // 获取区域数据
-        getDomainData().then((res) => {
-          this.domain = res
-        })
-        // 获取林业的碳汇量
-        getCarbonSinkData().then(res => {
-          this.forestry = res[0]
+        // 获取区域数据, 获取林业的碳汇量数据
+        Promise.all([getDomainData(), getCarbonSinkData()]).then(res => {
+          this.domain = res[0]
+          this.forestry = res[1][0]
+          this.setMapData()
           this.rightTopLoading = false
         }).catch(() => (this.rightTopLoading = false))
       }
