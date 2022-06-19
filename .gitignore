@@ -25,6 +25,3 @@ yarn.lock
 deploy_dev.sh
 deploy_prod.sh
 dist.zip
-
-1.sh
-2.sh
