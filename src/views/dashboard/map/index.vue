@@ -91,9 +91,7 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
           keyboardEnable: false,
           mapStyle: "amap://styles/grey",
           center: [108.947044, 35.98445],
-          zoom: [6],
-          pitch: 0,
-          viewMode: '3D', // 地图模式
+          zoom: [6]
         });
         map.on('click', function(e) {
           // 拾取所在位置的行政区
@@ -114,6 +112,8 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
         this.disProvince.setMap(map);
         // marker会影响zoom初始化，因此需要重新设置
         map.setZoom(6.5)
+        map.setPitch(0)
+        map.setViewMode('3D')
         // 省市区范围图会影响中心点设置，因此要重新设置
         map.setCenter([108.947044, 35.98445])
       },
