@@ -59,7 +59,7 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
         domain: [],
         forestry: {},
         groups: [
-          { longitude: '109.832654',  latitude: '37.838099'  }, // 榆林
+           { longitude: '109.832654',  latitude: '37.838099'  }, // 榆林
           { longitude: '109.700589',  latitude: '36.21953'  }, // 延安
           { longitude: '109.22671',  latitude: '34.159562'  }, // 西安
           { longitude: '107.432185',  latitude: '32.880493'  }, // 汉中
@@ -91,7 +91,9 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
           keyboardEnable: false,
           mapStyle: "amap://styles/grey",
           center: [108.947044, 35.98445],
-          zoom: [6]
+          zoom: 6.5,
+          pitch: 0,
+          viewMode: '3D', // 地图模式
         });
         map.on('click', function(e) {
           // 拾取所在位置的行政区
@@ -110,12 +112,6 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
         // 陕西省绘图
         this.initProvince();
         this.disProvince.setMap(map);
-        // marker会影响zoom初始化，因此需要重新设置
-        map.setZoom(6.5)
-        map.setPitch(0)
-        map.setViewMode('3D')
-        // 省市区范围图会影响中心点设置，因此要重新设置
-        map.setCenter([108.947044, 35.98445])
       },
       // 新建多个标记 自定义 image = require('@/assets/map/red.png')
       setMarkers() {
@@ -159,7 +155,6 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
             that.gotoDetails(props.NAME_CHN)
           });
         }
-        map.setFitView();
       },
       // 鼠标提示
       showTipContent(street, country, sampling, target) {
