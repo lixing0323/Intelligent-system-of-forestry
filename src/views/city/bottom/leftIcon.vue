@@ -131,6 +131,9 @@ export default {
 
 <style lang="scss" scoped>
 @import "~@/styles/element-variables.scss";
+ .land {
+   width: 100%;
+ }
   .title {
     font-size: 18px;
     font-weight: bold;
@@ -140,14 +143,15 @@ export default {
     display: flex;
     flex-wrap: nowrap;
     .img-dev {
-      height: 600px;
       text-align: center;
     }
     .img {
-     width: 220px;
-     vertical-align: middle;
+      flex-grow: 1;
+      width: 100%;
+      vertical-align: middle;
     }
     .table {
+      flex-grow: 1;
       width: 100%;
       margin-left: 5px;
       border-spacing:1px;

@@ -31,8 +31,16 @@ export default {
   .top-flex {
     display: flex;
     flex-wrap: nowrap;
-  }
-  .left {
-    flex: 0 0 120px;
+    .left {
+      flex-grow: 1;
+    }
+    .middle {
+      flex-grow: 5;
+      margin-left: 5px;
+    }
+    .right {
+      flex-grow: 5;
+      margin-left: 5px;
+    }
   }
 </style>

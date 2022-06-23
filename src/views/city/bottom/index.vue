@@ -2,7 +2,7 @@
   <el-card class="business-card-padding-10">
     <div class="bottom-flex">
       <left-icon class="left" :data="plot" />
-      <middle-table />
+      <middle-table class="middle" />
       <right-card class="right" />
     </div>
   </el-card>
@@ -37,11 +37,16 @@ export default {
   .bottom-flex {
     display: flex;
     flex-wrap: nowrap;
-  }
-  .left {
-    flex: 0 0 600px;
-  }
-  .right {
-    flex: 0 0 260px;
+    .left {
+      flex-grow: 2;
+    }
+    .middle {
+      flex-grow: 1;
+      margin-left: 20px;
+    }
+    .right {
+      flex-grow: 2;
+      margin-left: 20px;
+    }
   }
 </style>

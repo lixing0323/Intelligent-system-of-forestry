@@ -46,6 +46,7 @@ export default {
 
 <style lang="scss" scoped>
 .sensor {
+  width: 100%;
 }
 .title {
   font-size: 18px;

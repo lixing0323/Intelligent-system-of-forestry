@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <div class="image-container"><el-image :src="hotImage" fit="fill" class="img" /></div>
-    <div class="image-container"><el-image :src="treeImage" fit="fill" class="img" /></div>
+  <div class="video">
+    <div class="image-container"><el-image :src="hotImage" fit="fill" class="img" :style="{width: `${width}px`}" /></div>
+    <div class="image-container"><el-image :src="treeImage" fit="fill" class="img" :style="{width: `${width}px`}" /></div>
   </div>
 </template>
 
@@ -15,7 +15,8 @@ export default {
   data() {
     return {
       hotImage: HotPNG,
-      treeImage: SkyPNG
+      treeImage: SkyPNG,
+      width: document.documentElement.clientWidth / 3
     }
   },
   created() {
@@ -26,13 +27,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.video {
+}
   .image-container {
     height: 210px;
     padding: 0 10px 0 10px;
     text-align: center;
   }
   .img {
-    width: 200px;
     height: 190px;
   }
 </style>

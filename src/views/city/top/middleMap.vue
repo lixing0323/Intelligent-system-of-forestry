@@ -25,7 +25,6 @@
     },
     data() {
       return {
-        width: document.documentElement.clientWidth - 580,
       }
     },
     watch: {},
