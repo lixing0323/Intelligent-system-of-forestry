@@ -2,10 +2,10 @@
   <div class="input-card" :style="{ right:'3%', top: '12%', width: '400px', height: '230px' }">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <div v-if="!cardLoading" class="rectangle-flex">
-      <div class="item"><rectangle :title="'林业面积/碳汇'" :area="100" :weight="forestry.sink_value" /></div>
-      <div class="item"> <rectangle :title="'荒漠面积/碳汇'" :area="200" :weight="600" /></div>
+      <div class="item"><rectangle :title="'林地面积/碳汇'" :area="100" :weight="forestry.sink_value" /></div>
+      <div class="item"> <rectangle :title="'草原面积/碳汇'" :area="200" :weight="600" /></div>
       <div class="item top"><rectangle :title="'湿地面积/碳汇'" :area="300" :weight="600" /></div>
-      <div class="item top"><rectangle :title="'草原面积/碳汇'" :area="400" :weight="700" /></div>
+      <div class="item top"><rectangle :title="'荒漠面积/碳汇'" :area="400" :weight="700" /></div>
     </div>
   </div>
 </template>

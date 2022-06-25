@@ -27,10 +27,10 @@ export default {
   },
   created() {
     this.data = [
-      { value: 25, name: '林地', label: { color: '#E57F2C' }, itemStyle: { color: '#D1985C' }},
-      { value: 25, name: '草原', label: { color: '#4374CB' }, itemStyle: { color: '#4374CB' }},
-      { value: 25, name: '荒漠', label: { color: '#2CE57F' }, itemStyle: { color: '#5CC76A' }},
-      { value: 25, name: '湿地', label: { color: '#17C3DA' }, itemStyle: { color: '#28A6E9' }}
+      { value: 25, name: '草原', label: { color: '#E57F2C' }, itemStyle: { color: '#D1985C' }},
+      { value: 25, name: '荒漠', label: { color: '#4374CB' }, itemStyle: { color: '#4374CB' }},
+      { value: 25, name: '湿地', label: { color: '#2CE57F' }, itemStyle: { color: '#5CC76A' }},
+      { value: 25, name: '林地', label: { color: '#17C3DA' }, itemStyle: { color: '#28A6E9' }}
     ]
   },
   methods: {
