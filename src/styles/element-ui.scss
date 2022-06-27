@@ -148,3 +148,27 @@ li.el-timeline-item{
 .el-table .deep-colour-row {
   background: #EEEEEE
 }
+
+.business-information-step {
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    text-align: center;
+
+    .item {
+      text-align: left;
+      width: 340px;
+      .select {
+        width: 100%;
+      }
+      .input {
+        width: 100%;
+      }
+      .gps {
+        width: 100px;
+      }
+    }
+  }
+
+}

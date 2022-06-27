@@ -48,10 +48,6 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/tanhui',
-    redirect: '/login'
-  },
-  {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
