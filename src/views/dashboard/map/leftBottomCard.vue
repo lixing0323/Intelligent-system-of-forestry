@@ -2,7 +2,7 @@
   <div class="input-card" :style="{left:'3%', bottom: '3%', width: '400px', height: '330px' }">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <template v-if="!cardLoading">
-      <div class="title">碳汇量/碳储量占比</div>
+      <div class="title">样地碳汇量/碳储量占比</div>
       <div class="pie-dot">
         <span> <i class="summary-i" /> 碳汇量</span>
         <span class="store"> <i class="store-i" /> 碳储量</span>

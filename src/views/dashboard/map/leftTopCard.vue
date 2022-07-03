@@ -2,7 +2,7 @@
   <div class="input-card" :style="{ left:'3%', top: '12%', width: '400px', height: '230px' }">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <template v-if="!cardLoading">
-      <div class="title">面积占比</div>
+      <div class="title">碳储量总面积占比</div>
       <pie-chart :id="'area'" ref="eChart" :chart-data="data" class="pie" />
     </template>
 

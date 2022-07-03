@@ -3,18 +3,23 @@
     <div class="province-title">
       <div>
         <span class="center-title">
-          陕西省
-          <span v-if="subTitle">（{{ subTitle }}）</span>
+          {{ title }}
         </span>
-        <dv-decoration-5 style="width:100%;height:30px;" />
       </div>
     </div>
 
-    <div class="province-flex-card">
+    <div v-if="showStatistics" class="province-flex-card">
+      <div class="input-card">
+        <div class="label">样地总数</div>
+        <div class="number">
+          <span><ht-count-number :start-val="0" :end-val="115" class="value" /></span>
+          <span class="unit" />
+        </div>
+      </div>
       <div class="input-card">
         <div class="label">总面积</div>
         <div class="number">
-          <span><ht-count-number :start-val="0" :end-val="1030" class="value" /></span>
+          <span><ht-count-number :start-val="0" :end-val="2090" class="value" /></span>
           <span class="unit">公顷</span>
         </div>
       </div>
@@ -36,15 +41,19 @@ import HtCountNumber from '@/components/HtCountNumber'
 export default {
   components: { HtCountNumber },
   props: {
-    subTitle: {
+    title: {
       type: String,
-      default: undefined
+      default: '陕西省'
+    },
+    showStatistics: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
     return {
       data: [],
-      width: 300
+      width: document.documentElement.clientWidth / 4
     }
   },
   computed: {
@@ -74,22 +83,24 @@ export default {
 }
 
 .province-title {
+  display: flex;
+  flex-direction: row;
   color: $--color-font;;
   .center-title {
     padding: 0 15px;
   }
 }
-//.province-title:before,
-//.province-title:after {
-//  content: "";
-//  flex: 1 1;
-//  border-bottom: 1px solid $--color-font;
-//  margin: auto;
-//}
-
+.province-title:before,
+.province-title:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid $--color-font;
+  margin: auto;
+}
 .province-flex-card {
   display: flex;
   flex-wrap: nowrap;
+  margin-top: 10px;
 }
   .input-card {
     background: rgba(46, 53, 71, 0.5);

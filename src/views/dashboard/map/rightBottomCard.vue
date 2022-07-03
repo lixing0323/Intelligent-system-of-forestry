@@ -2,7 +2,7 @@
   <div class="input-card" :style="{right:'3%', bottom: '3%', width: '400px', height: '330px' }">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <template v-if="!cardLoading">
-      <div class="title">碳汇监测样地</div>
+      <div class="title">样地碳储量排名</div>
       <el-radio-group v-model="radio" class="tree-check-radio" @change="changeRadio">
         <el-radio v-for="(l, index) in labels" :key="index" :label="l">{{ l }}</el-radio>
       </el-radio-group>

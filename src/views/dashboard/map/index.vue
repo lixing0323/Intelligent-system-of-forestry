@@ -1,4 +1,5 @@
 <template>
+  <!--此处，div排列顺序不能改变，先画地图，然后中间的图片，再次其他的-->
   <div class="business-map">
     <div class="map" :style="{ height: height + 'px' }">
       <div :id="id" class="map" />
@@ -6,6 +7,12 @@
 
     <div class="homepage-png">
       <el-image :src="HomepagePNG" />
+    </div>
+
+    <div class="exit" @click="logout()">
+      <el-tooltip content="退出登录" effect="dark" placement="bottom">
+        <i class="fa fa-power-off fa-icon" />
+      </el-tooltip>
     </div>
 
     <div class="screen-full">
@@ -98,10 +105,11 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
         map.on('click', function(e) {
           // 拾取所在位置的行政区
           const props = that.disProvince.getDistrictByContainerPos(e.pixel)
-          that.cityName = props.NAME_CHN
-          const msg = `经度=${e.lnglat.getLng()}纬度=${e.lnglat.getLat()}地址：${props}`
-          console.log(msg)
-          // that.$message.success({ message: msg, duration: 5000 })
+          if (props) {
+            that.cityName = props.NAME_CHN
+            const msg = `经度=${e.lnglat.getLng()}纬度=${e.lnglat.getLat()}地址：${props}`
+            console.log(msg)
+          }
         });
         map.clearMap();
       },
@@ -126,24 +134,22 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
           const street = '街道'
 
           this.markers[i] = new AMap.Marker({
-            // content: '<div class="markerClass more-animation"></div>',
-            icon: new AMap.Icon({
-              image: require('@/assets/city/flag.png'),
-              size: new AMap.Size(20, 52),
-              imageSize: new AMap.Size(20,52)}),
+            content: '<div class="markerClass more-animation"></div>',
             position: position,
+            offset: new AMap.Pixel(0, 0),
+            shape: new AMap.MarkerShape({coords: [18, 18, 18], type: 'circle'}),
             extData: {
               label:  that.showTipContent(null, country, sampling, target ),
               sampling: sampling, street: street }
           });
           map.add(this.markers[i]);
           // 显示鼠标窗口提示
-          // AMap.event.addListener(this.markers[i], 'mouseover', (e) => {
-          //   const position = [e.target.getPosition().lng, e.target.getPosition().lat]
-          //   const content = that.showTipContent('街道', '村', '样本1', '目标1')
-          //   infoWindow.setContent(content);
-          //   infoWindow.open(map, position);
-          // });
+          AMap.event.addListener(this.markers[i], 'mouseover', (e) => {
+            const props = that.disProvince.getDistrictByContainerPos(e.pixel)
+            const content = that.showTipContent(props.NAME_CHN,[])
+            infoWindow.setContent(content);
+            infoWindow.open(map, position);
+          });
           // 隐藏窗体
           AMap.event.addListener(this.markers[i], 'mouseout', () => {
             infoWindow.close()
@@ -157,12 +163,27 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
         }
       },
       // 鼠标提示
-      showTipContent(street, country, sampling, target) {
+      showTipContent(city, list) {
         return`<div class="content-window-card">
-                 <div class="info-top">${country}</div>
+                 <div class="info-top">
+                    <div class="title">${city}</div>
+                    <div class="row-label label">
+                        <div class="column-title"></div><div class="column">数量</div><div class="column">面积(公顷)</div><div class="column">碳储(吨)</div>
+                    </div>
+                 </div>
                  <div class="info-middle">
-                  <div class="tip-label">实际/目标采样数: <span class="tip-number">${sampling} / ${target}</span>（人次）</div>
-                   <div class="tip-label">采样率: <span class="tip-number">1</span></div>
+                    <div class="row-label">
+                        <div class="column-title">林地</div><div class="column">2</div><div class="column">250</div><div class="column">350</div>
+                    </div>
+                     <div class="row-label">
+                        <div class="column-title">草原</div><div class="column">3</div><div class="column">360</div><div class="column">460</div>
+                    </div>
+                     <div class="row-label">
+                        <div class="column-title">湿地</div> <div class="column">4</div><div class="column">260</div><div class="column">231</div>
+                    </div>
+                      <div class="row-label">
+                        <div class="column-title">荒漠</div><div class="column">1</div><div class="column">123</div><div class="column">158</div>
+                    </div>
                  </div>
                  <div class="info-bottom"><img style="width: 1.1rem;height: 0.5rem" src="https://epidemic-control-1253330314.cos.ap-nanjing.myqcloud.com/nucleic_acid_map/arrow.png" /></div>
                </div>`
@@ -196,6 +217,18 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
           this.$message({ message: `城市数据还未返回或者数据错误，请稍后再点击`, duration: 1500, type: 'error' })
         }
       },
+      // 退出登录
+      logout() {
+        this.$confirm('此操作将登出当前账号, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$store.dispatch('user/logout').then(() => {
+            this.$router.push(`/login`)
+          })
+        })
+      },
       // 获取数据
       getData() {
         // 获取区域数据, 获取林业的碳汇量数据
@@ -212,6 +245,7 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
 </script>
 
 <style lang="scss">
+@import "~@/styles/element-variables.scss";
 .map {
   width: 100%;
   height: 100%;
@@ -244,15 +278,15 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
 }
 
 .more {
-  background-color: #2039fc;
+  background-color: $--color-font;
 }
 
 .more-animation {
-  background-color: #2039fc;
+  background-color: $--color-font;
 }
 
 .more-animation::after {
-  box-shadow: 0 0 6px 2px #2039fc;
+  box-shadow: 0 0 6px 2px $--color-font;
 }
 
 .less {
@@ -305,40 +339,63 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
 
 .content-window-card {
   position: relative;
-  box-shadow: none;
   bottom: 0;
   left: 0;
   width: auto;
   padding: 0;
-  border: solid 1px silver;
-}
-div.info-top {
-  position: relative;
-  background: none repeat scroll 0 0 #F9F9F9;
-  border-bottom: 1px solid #CCC;
-  border-radius: 5px 5px 0 0;
-  color: #333333;
-  font-size: 0.9rem;
-  font-weight: bold;
-  line-height: 31px;
-  padding: 0 10px;
+  border: solid 1px $--color-font;
+  box-shadow: 0 0 6px 2px $--color-font;
+  border-radius: 25px;
+
+  .row-label {
+    text-align: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    .column-title {
+      width: 45px;
+    }
+    .column {
+      width: 65px;
+    }
+  }
+  div.info-top {
+    position: relative;
+    border-radius: 15px 15px 0 0;
+    background: none repeat scroll 0 0 $--color-font;
+    border-bottom: 1px solid #FFF;
+    color: #333333;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 0 10px;
+    .title {
+      font-size: 0.9rem !important;
+    }
+    .label {
+      font-size: 0.5rem !important;
+    }
+  }
+
+
+  div.info-middle {
+    font-size: 12px;
+    padding: 10px 6px;
+    line-height: 20px;
+    background-color: $--color-font;
+    border-radius: 0 0 15px 15px;
+  }
+
+  div.info-bottom {
+    height: 0;
+    width: 100%;
+    clear: both;
+    border-radius: 0 0 15px 15px;
+    text-align: center;
+    position: relative;
+    top: -0.3rem;
+  }
 }
 
-div.info-middle {
-  font-size: 12px;
-  padding: 10px 6px;
-  line-height: 20px;
-  background-color: white;
-}
-
-div.info-bottom {
-  height: 0px;
-  width: 100%;
-  clear: both;
-  text-align: center;
-  position: relative;
-  top: -0.3rem;
-}
 
 .homepage-png {
   display: block;
@@ -354,6 +411,21 @@ div.info-bottom {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+.exit {
+  display: block;
+  color: #2A9A30;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  height: 30px;
+  .fa-icon {
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+  }
 }
 </style>
 
