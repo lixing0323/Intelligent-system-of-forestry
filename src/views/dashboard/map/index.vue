@@ -2,22 +2,12 @@
   <!--此处，div排列顺序不能改变，先画地图，然后中间的图片，再次其他的-->
   <div class="business-map">
     <div class="map" :style="{ height: height + 'px' }">
-      <div :id="id" class="map" />
+      <div id="province" class="map" />
     </div>
 
-    <div class="homepage-png">
-      <el-image :src="HomepagePNG" />
-    </div>
-
-    <div class="exit" @click="logout()">
-      <el-tooltip content="退出登录" effect="dark" placement="bottom">
-        <i class="fa fa-power-off fa-icon" />
-      </el-tooltip>
-    </div>
-
-    <div class="screen-full">
-      <full-screen />
-    </div>
+    <header-image />
+    <exit-icon />
+    <full-screen />
 
     <middle-top-card :sub-title="cityName" />
     <left-top-card :card-loading="rightTopLoading" />
@@ -29,7 +19,8 @@
 
 <script>
 /* eslint-disable */
-import HomepagePNG from '@/assets/city/home.png'
+import HeaderImage from './compoennts/header'
+import ExitIcon from './compoennts/exit'
 import LeftTopCard from './leftTopCard'
 import LeftBottomCard from './leftBottomCard'
 import RightTopCard from './rightTopCard'
@@ -45,7 +36,7 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
 
   export default {
     name: "map-show",
-    components: { LeftTopCard, LeftBottomCard, RightTopCard, RightBottomCard, MiddleTopCard, FullScreen },
+    components: { HeaderImage, ExitIcon, LeftTopCard, LeftBottomCard, RightTopCard, RightBottomCard, MiddleTopCard, FullScreen },
     props: {
       // id
       id: {
@@ -61,7 +52,7 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
     },
     data() {
       return {
-        HomepagePNG, TrianglePNG,
+        TrianglePNG,
         height: document.documentElement.clientHeight - 5,
         markers: [],
         domain: [],
@@ -69,7 +60,7 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
         groups: [
            { longitude: '109.832654',  latitude: '37.838099'  }, // 榆林
           { longitude: '109.700589',  latitude: '36.21953'  }, // 延安
-          { longitude: '109.22671',  latitude: '34.159562'  }, // 西安
+          { longitude: '109.01671',  latitude: '34.359562'  }, // 西安
           { longitude: '107.432185',  latitude: '32.880493'  }, // 汉中
           // { longitude: '108.644072',  latitude: '32.579881'  }, // 安康
           { longitude: '107.168056',  latitude: '34.316907'  }, // 宝鸡
@@ -94,7 +85,7 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
       // 新建地图
       createMap() {
         const that = this
-        map = new AMap.Map(this.id, {
+        map = new AMap.Map('province', {
           resizeEnable: true,
           keyboardEnable: false,
           mapStyle: "amap://styles/grey",
@@ -107,9 +98,7 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
           // 拾取所在位置的行政区
           const props = that.disProvince.getDistrictByContainerPos(e.pixel)
           if (props) {
-            that.cityName = props.NAME_CHN
-            const msg = `经度=${e.lnglat.getLng()}纬度=${e.lnglat.getLat()}地址：${props}`
-            console.log(msg)
+            that.gotoDetails(props.NAME_CHN)
           }
         });
         map.clearMap();
@@ -159,9 +148,6 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
           });
           // 点击marker进入子界面
           AMap.event.addListener(this.markers[i], 'click', (e) => {
-            // 所在位置的行政区
-            const props = that.disProvince.getDistrictByContainerPos(e.pixel)
-            that.gotoDetails(props.NAME_CHN)
           });
         }
       },
@@ -212,18 +198,6 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
         } else {
           this.$message({ message: `城市数据还未返回或者数据错误，请稍后再点击`, duration: 1500, type: 'error' })
         }
-      },
-      // 退出登录
-      logout() {
-        this.$confirm('此操作将登出当前账号, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          this.$store.dispatch('user/logout').then(() => {
-            this.$router.push(`/login`)
-          })
-        })
       },
       // 获取数据
       getData() {

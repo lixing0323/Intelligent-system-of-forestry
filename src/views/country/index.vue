@@ -1,31 +1,51 @@
 <template>
-  <div>
-    <div>
-      <top />
-      <bottom :plot="plot" />
-
-      <div class="screen-full">
-        <full-screen />
-      </div>
+  <div class="business-map">
+    <div class="map" :style="{ height: height + 'px' }">
+      <div id="country" class="map" />
     </div>
+
+    <header-image />
+    <back-icon />
+    <full-screen />
+
+    <left-top-card />
+    <right-top-card />
+    <left-bottom-card :data="plot" />
+    <middle-top-card :show-bar="false" :show-statistics="false" />
+    <middle-bottom-card />
+    <right-bottom-card />
   </div>
 </template>
 
-// 城市
 <script>
-import Top from './top/index'
-import Bottom from './bottom/index'
+/* eslint-disable */
+import HeaderImage from '@/views/dashboard/map/compoennts/header'
+import BackIcon from '@/views/dashboard/map/compoennts/back'
 import FullScreen from '@/views/dashboard/map/compoennts/fullScreen'
+import MiddleTopCard from '@/views/dashboard/map/middleTopCard'
+import LeftTopCard from './leftTopCard'
+import RightTopCard from './rightTopCard'
+import LeftBottomCard from './leftBottomCard'
+import MiddleBottomCard from './middleBottomCard'
+import RightBottomCard from './rightBottomCard'
+
 import { getPlotData } from '@/api/dashboard/plot'
+// 地图
+var map;
 
 export default {
   name: 'CityDetails',
-  components: { Top, Bottom, FullScreen },
+  components: { HeaderImage, BackIcon, FullScreen, LeftTopCard, RightTopCard, LeftBottomCard,
+    MiddleBottomCard, RightBottomCard, MiddleTopCard },
   data() {
     return {
       id: undefined,
+      height: document.documentElement.clientHeight - 5,
       plot: {}
     }
+  },
+  mounted() {
+    this.createMap()
   },
   created() {
     this.id = this.$route.params.id
@@ -34,6 +54,14 @@ export default {
     }
   },
   methods: {
+    // 新建地图
+    createMap() {
+      map = new AMap.Map('country', {
+        mapStyle: "amap://styles/grey",
+        center: [108.947044, 34.58445],
+        zoom: 9
+      });
+    },
     getData() {
       // 获取样地数据
       this.getPlotItem()
@@ -48,17 +76,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.screen-full {
-  display: block;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-.back-dashboard {
-  display: block;
-  position: absolute;
-  top: 20px;
-  right: 60px;
+<style lang="scss">
+.map {
+  width: 100%;
+  height: 100%;
 }
 </style>

@@ -69,6 +69,9 @@ export default {
       if (rowIndex % 2 === 1) {
         return 'light-colour-row'
       }
+    },
+    onView(row) {
+      this.$router.push({ name: 'CountryDetails', params: { id: row.id ? row.id : 1 }})
     }
   }
 }

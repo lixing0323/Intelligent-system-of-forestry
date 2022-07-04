@@ -1,6 +1,6 @@
 <template>
-  <div class="tab">
-    <el-tabs :tab-position="'left'" style="height: 200px">
+  <div class="tab business-tab" :style="{ left:'3%', top: '100px', width: '80px', height: 'auto' }">
+    <el-tabs :tab-position="'left'">
       <el-tab-pane v-for="(t, index) in tabs" :key="index" :label="t" />
     </el-tabs>
   </div>
@@ -13,7 +13,7 @@ export default {
   components: { },
   data() {
     return {
-      tabs: ['西安市监测点1', '西安市监测点2', '西安市监测点3', '西安市监测点4']
+      tabs: ['样本1', '样本2', '样本3', '样本4']
     }
   },
   created() {
@@ -25,5 +25,9 @@ export default {
 
 <style lang="scss" scoped>
 .tab {
+  background: rgba(46, 53, 71, 0.5);
+  background-clip: border-box;
+  display: block;
+  position: absolute;
 }
 </style>

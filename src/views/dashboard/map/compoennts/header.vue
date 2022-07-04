@@ -1,16 +1,16 @@
 <template>
-  <div class="dashboard">
-    <map-show />
+  <div class="homepage-png">
+    <el-image :src="HomepagePNG" />
   </div>
 </template>
 
 <script>
-import MapShow from './map'
-
+import HomepagePNG from '@/assets/city/home.png'
 export default {
-  components: { MapShow },
+  components: { },
   data() {
     return {
+      HomepagePNG
     }
   },
   created() {
@@ -21,4 +21,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 </style>

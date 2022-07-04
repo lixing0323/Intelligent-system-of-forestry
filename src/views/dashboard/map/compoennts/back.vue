@@ -1,14 +1,12 @@
 <template>
-  <div class="dashboard">
-    <map-show />
+  <div class="back" @click="goBack()">
+    <i class="fa fa-chevron-left fa-icon" />
   </div>
 </template>
 
 <script>
-import MapShow from './map'
-
 export default {
-  components: { MapShow },
+  components: { },
   data() {
     return {
     }
@@ -16,9 +14,14 @@ export default {
   created() {
   },
   methods: {
+    // 返回上一级
+    goBack() {
+      this.$router.go(-1)
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
 </style>

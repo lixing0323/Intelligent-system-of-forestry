@@ -1,5 +1,5 @@
 <template>
-  <div class="input-card" :style="{ left:'3%', top: '12%', width: '400px', height: '230px' }">
+  <div class="input-card" :style="{ left:'3%', top: '100px', width: '400px', height: '230px' }">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <template v-if="!cardLoading">
       <div class="title">碳储量总面积占比</div>

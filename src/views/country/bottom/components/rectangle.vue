@@ -1,5 +1,5 @@
 <template>
-  <el-card class="sample-rectangle-container business-card-padding-5" shadow="always">
+  <el-card class="business-rectangle-card  sample-rectangle-container business-card-padding-5" shadow="always">
     <div>
       <span class="sample-value"> {{ value }}</span>
       <span class="sample-unit"> {{ unit }}</span>
@@ -43,22 +43,25 @@ export default {
 @import "~@/styles/element-variables.scss";
 .sample-rectangle-container {
   width: 120px;
-  height: 55px;
+  height: 50px;
   text-align: center;
   margin-bottom: 10px;
   margin-right: 10px;
+  background-color: #191E2C !important;
   .sample-value {
     color: #2A9A30;
     font-size: 16px;
     font-weight: bold;
+    margin-top: 10px;
   }
   .sample-unit {
     color: #2A9A30;
     font-size: 12px;
   }
   .sample-title {
-    color: #3F3F3F;
+    color: #FFFFFF;
     font-size: 12px;
+    margin-top: 3px;
   }
 }
 </style>

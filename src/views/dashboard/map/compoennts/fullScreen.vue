@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="screen-full">
     <el-tooltip :content="getTooltipContent()" effect="dark" placement="bottom">
       <svg-icon :icon-class="isFullscreen?'exit-fullscreen':'fullscreen'" @click="click" />
     </el-tooltip>

@@ -1,18 +1,10 @@
 <template>
   <div class="business-map">
-    <div class="homepage-png">
-      <el-image :src="HomepagePNG" />
-    </div>
+    <header-image />
+    <back-icon />
+    <full-screen />
 
-    <div class="back" @click="goBack()">
-      <i class="fa fa-chevron-left fa-icon" />
-    </div>
-
-    <div class="screen-full">
-      <full-screen />
-    </div>
-
-    <middle-top-card :sub-title="cityName" />
+    <middle-top-card :title="cityName" :show-bar="true" />
     <left-top-card :card-loading="rightTopLoading" />
     <right-top-card :card-loading="rightTopLoading" :forestry="forestry" />
     <bottom-card />
@@ -21,7 +13,8 @@
 
 <script>
 // 城市
-import HomepagePNG from '@/assets/city/home.png'
+import HeaderImage from '@/views/dashboard/map/compoennts/header'
+import BackIcon from '@/views/dashboard/map/compoennts/back'
 import LeftTopCard from '@/views/dashboard/map/leftTopCard'
 import RightTopCard from '@/views/dashboard/map/rightTopCard'
 import MiddleTopCard from '@/views/dashboard/map/middleTopCard'
@@ -31,27 +24,19 @@ import { getDomainData } from '@/api/dashboard/domain.js'
 import { getCarbonSinkData } from '@/api/dashboard/carbonSink'
 
 export default {
-  components: { LeftTopCard, RightTopCard, MiddleTopCard, FullScreen, BottomCard },
+  components: { HeaderImage, BackIcon, LeftTopCard, RightTopCard, MiddleTopCard, FullScreen, BottomCard },
   props: {
   },
   data() {
     return {
-      HomepagePNG,
       domain: [],
       forestry: {},
       cityName: undefined,
-      rightTopLoading: false,
-      id: undefined
+      rightTopLoading: false
     }
   },
-  computed: {
-  },
-  watch: {},
-  mounted() {
-    this.getData()
-  },
   created() {
-    this.id = this.$route.params.id
+    this.getData()
   },
   methods: {
     // 获取数据
@@ -60,15 +45,13 @@ export default {
       Promise.all([getDomainData(), getCarbonSinkData()]).then(res => {
         this.domain = res[0]
         this.forestry = res[1][0]
-        this.setMapData()
         this.rightTopLoading = false
 
         this.getCityName(this.domain)
       }).catch(() => (this.rightTopLoading = false))
     },
     getCityName(data) {
-      const index = data.findIndex(item => item.id === Number(this.id))
-      console.log(data)
+      const index = data.findIndex(item => item.id === Number(this.$route.params.id))
       if (index !== -1) {
         this.cityName = data[index].name
       }

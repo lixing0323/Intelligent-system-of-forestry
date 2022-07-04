@@ -1,45 +1,53 @@
 <template>
-  <div class="province-label" :style="{left: left, top: '12%', width: `${width}px`, 'text-align': 'center' }">
-    <div class="province-title">
-      <div>
-        <span class="center-title">
-          {{ title }}
-        </span>
+  <div>
+    <div class="province-label" :style="{left: left, top: '100px', width: `${width}px`, 'text-align': 'center' }">
+      <div class="province-title">
+        <div><span class="center-title">{{ title }}</span></div>
+      </div>
+
+      <div v-if="showStatistics" class="province-flex-card">
+        <div class="input-card">
+          <div class="label">样地总数</div>
+          <div class="number">
+            <span><ht-count-number :start-val="0" :end-val="115" class="value" /></span>
+            <span class="unit" />
+          </div>
+        </div>
+        <div class="input-card" style="margin: 0 20px">
+          <div class="label">总面积</div>
+          <div class="number">
+            <span><ht-count-number :start-val="0" :end-val="2090" class="value" /></span>
+            <span class="unit">公顷</span>
+          </div>
+        </div>
+        <div class="input-card">
+          <div class="label">总储量</div>
+          <div class="number">
+            <span><ht-count-number :start-val="0" :end-val="2090" class="value" /></span>
+            <span class="unit">吨</span>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div v-if="showStatistics" class="province-flex-card">
-      <div class="input-card">
-        <div class="label">样地总数</div>
-        <div class="number">
-          <span><ht-count-number :start-val="0" :end-val="115" class="value" /></span>
-          <span class="unit" />
-        </div>
+    <div v-if="showBar" class="area-card" :style="{left: left, top: '205px', width: `${width}px`}">
+      <div class="title">各区域分布
+        <el-radio-group v-model="radio" class="tree-check-radio area-radio" @change="changeRadio">
+          <el-radio v-for="(l, index) in labels" :key="index" :label="l">{{ l }}</el-radio>
+        </el-radio-group>
       </div>
-      <div class="input-card">
-        <div class="label">总面积</div>
-        <div class="number">
-          <span><ht-count-number :start-val="0" :end-val="2090" class="value" /></span>
-          <span class="unit">公顷</span>
-        </div>
-      </div>
-      <div class="input-card">
-        <div class="label">总储量</div>
-        <div class="number">
-          <span><ht-count-number :start-val="0" :end-val="2090" class="value" /></span>
-          <span class="unit">吨</span>
-        </div>
-      </div>
+      <echarts-bar class="echarts-bar" :width="width+40" :chart-data="items" :height="80" />
     </div>
   </div>
+
 </template>
 
 <script>
 // 顶部中间位置
 import HtCountNumber from '@/components/HtCountNumber'
+import EchartsBar from '@/views/dashboard/map/compoennts/bar'
 
 export default {
-  components: { HtCountNumber },
+  components: { HtCountNumber, EchartsBar },
   props: {
     title: {
       type: String,
@@ -48,12 +56,19 @@ export default {
     showStatistics: {
       type: Boolean,
       default: true
+    },
+    showBar: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       data: [],
-      width: document.documentElement.clientWidth / 4
+      width: document.documentElement.clientWidth / 3,
+      radio: '样地数',
+      labels: ['样地数', '面积', '碳储量'],
+      items: []
     }
   },
   computed: {
@@ -68,8 +83,21 @@ export default {
       { value: 25, name: '荒漠', label: { color: '#2CE57F' }, itemStyle: { color: '#5CC76A' }},
       { value: 25, name: '湿地', label: { color: '#17C3DA' }, itemStyle: { color: '#28A6E9' }}
     ]
+    this.items = [120, 200, 150, 80, 70, 110, 130]
   },
   methods: {
+    changeRadio(val) {
+      if (val !== '样地数') {
+        for (let i = 0, len = this.items.length; i < len; i++) {
+          const rand = parseInt(Math.random() * len)
+          const temp = this.items[rand]
+          this.items[rand] = this.items[i]
+          this.items[i] = temp
+        }
+      } else {
+        this.items = Object.assign([], this.values)
+      }
+    }
   }
 }
 </script>
@@ -103,14 +131,13 @@ export default {
   margin-top: 10px;
 }
   .input-card {
-    background: rgba(46, 53, 71, 0.5);
+    background: rgba(0, 0, 0, 0.5);
     background-clip: border-box;
     border-width: 0;
     color: $--color-font;
     border-radius: 0.4rem;
     vertical-align: middle;
     padding-top: 5px;
-    margin: 0 10px;
     height: 55px;
     flex: 1;
 
@@ -129,4 +156,23 @@ export default {
       }
     }
   }
+.area-card {
+  background: rgba(46, 53, 71, 0.5);
+  background-clip: border-box;
+  border-width: 0;
+  color: $--color-font;
+  border-radius: 0.4rem;
+  display: block;
+  padding: 10px;
+  position: absolute;
+  .title {
+    font-size: 14px;
+  }
+  .area-radio {
+    float: right;
+  }
+  .echarts-bar {
+    margin-top: 10px;
+  }
+}
 </style>

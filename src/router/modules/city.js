@@ -9,7 +9,7 @@ export const cityRouter = {
       path: '/city/:id',
       component: () => import('@/views/city/index'),
       name: 'CityDetails',
-      meta: { title: '详情' }
+      meta: { title: '城市详情' }
     }
   ]
 }
