@@ -3,10 +3,10 @@
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <div class="title">总面积及总碳储量</div>
     <div v-if="!cardLoading" class="rectangle-flex">
-      <div class="item"><rectangle :title="'林地面积/碳汇'" :area="100" :weight="forestry.sink_value" /></div>
-      <div class="item"> <rectangle :title="'草原面积/碳汇'" :area="200" :weight="600" /></div>
-      <div class="item top"><rectangle :title="'湿地面积/碳汇'" :area="300" :weight="600" /></div>
-      <div class="item top"><rectangle :title="'荒漠面积/碳汇'" :area="400" :weight="700" /></div>
+      <div class="item"><rectangle :title="'林地面积/碳储'" :area="100" :weight="forestry.sink_value" /></div>
+      <div class="item"> <rectangle :title="'草原面积/碳储'" :area="200" :weight="600" /></div>
+      <div class="item top"><rectangle :title="'湿地面积/碳储'" :area="300" :weight="600" /></div>
+      <div class="item top"><rectangle :title="'荒漠面积/碳储'" :area="400" :weight="700" /></div>
     </div>
   </div>
 </template>

@@ -38,13 +38,13 @@ import MiddleTopCard from './middleTopCard'
 import FullScreen from './compoennts/fullScreen'
 
 import { getDomainData } from '@/api/dashboard/domain.js'
-import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
+import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
 // 地图
   var map;
 
   export default {
     name: "map-show",
-    components: { HomepagePNG, LeftTopCard, LeftBottomCard, RightTopCard, RightBottomCard, MiddleTopCard, FullScreen },
+    components: { LeftTopCard, LeftBottomCard, RightTopCard, RightBottomCard, MiddleTopCard, FullScreen },
     props: {
       // id
       id: {
@@ -146,9 +146,11 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
           // 显示鼠标窗口提示
           AMap.event.addListener(this.markers[i], 'mouseover', (e) => {
             const props = that.disProvince.getDistrictByContainerPos(e.pixel)
-            const content = that.showTipContent(props.NAME_CHN,[])
-            infoWindow.setContent(content);
-            infoWindow.open(map, position);
+            if (props) {
+              const content = that.showTipContent(props.NAME_CHN,[])
+              infoWindow.setContent(content);
+              infoWindow.open(map, position);
+            }
           });
           // 隐藏窗体
           AMap.event.addListener(this.markers[i], 'mouseout', () => {
@@ -156,7 +158,7 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
           });
           // 点击marker进入子界面
           AMap.event.addListener(this.markers[i], 'click', (e) => {
-            // 拾取所在位置的行政区
+            // 所在位置的行政区
             const props = that.disProvince.getDistrictByContainerPos(e.pixel)
             that.gotoDetails(props.NAME_CHN)
           });
@@ -202,18 +204,11 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
       },
       // 跳转详情
       gotoDetails(name) {
-        let valid = false
         if (this.domain && this.domain.length > 0) {
           const index = this.domain.findIndex(item => name.indexOf(item.name) !== -1)
-          console.log(this.domain, name)
-          if (index !== -1) {
-            valid = true
-             // const id = this.domain[index].org_id
-            const id = 1
-            this.$router.push({name: 'CityDetails', params: { id: 1 }})
-          }
-        }
-        if (!valid) {
+          const id = index !== -1 ? this.domain[index].id : 1
+          this.$router.push({name: 'CityDetails', params: { id: id  }})
+        } else {
           this.$message({ message: `城市数据还未返回或者数据错误，请稍后再点击`, duration: 1500, type: 'error' })
         }
       },
@@ -397,35 +392,5 @@ import {getCarbonSinkData} from "@/api/dashboard/carbonSink";
 }
 
 
-.homepage-png {
-  display: block;
-  position: absolute;
-  text-align: center;
-  left: 0;
-  right: 0;
-  top: 0;
-}
-
-.screen-full {
-  display: block;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.exit {
-  display: block;
-  color: #2A9A30;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 30px;
-  height: 30px;
-  .fa-icon {
-    display: inline-block;
-    cursor: pointer;
-    font-weight: bold;
-  }
-}
 </style>
 

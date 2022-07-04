@@ -18,7 +18,7 @@
 
 .cell {
   .el-tag {
-    margin-right: 0px;
+    margin-right: 0;
   }
 }
 
@@ -93,6 +93,17 @@
   }
 }
 
+.el-table {
+  border: 1px solid #1B232C !important;
+  background-color: #2E3547 !important;
+}
+.el-table::before {
+  height: 0 !important;
+}
+.el-table::after {
+  width: 0 !important;
+}
+
 .el-table .cell {
   .el-form-item--mini.el-form-item {
     min-height: 36px;
@@ -142,11 +153,11 @@ li.el-timeline-item{
 }
 
 .el-table .light-colour-row {
-  background: #FFFFFF
+  background: #384251 !important;
 }
 
 .el-table .deep-colour-row {
-  background: #EEEEEE
+  background: #2E3547 !important;
 }
 
 .business-information-step {
@@ -171,4 +182,59 @@ li.el-timeline-item{
     }
   }
 
+}
+
+.business-map {
+  background-color: $--background-color;
+  height: 100%;
+  .exit {
+    display: block;
+    color: #2A9A30;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    height: 30px;
+    .fa-icon {
+      display: inline-block;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+  .screen-full {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .back {
+    display: block;
+    color: #2A9A30;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    height: 30px;
+    .fa-icon {
+      display: inline-block;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+  .homepage-png {
+    display: block;
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+}
+
+.business-search {
+  .el-input__inner {
+    background-color: $--background-color;
+    border: 1px solid $--background-color;
+    color: #FFFFFF;
+  }
 }

@@ -7,7 +7,7 @@
         <el-radio v-for="(l, index) in labels" :key="index" :label="l">{{ l }}</el-radio>
       </el-radio-group>
       <div class="progress-div">
-        <div class="right-title">碳汇量(吨)</div>
+        <div class="right-title">碳储量(吨)</div>
         <progress-line v-for="(item, index) in items" :key="index" :title="item.title" :value="item.value" />
       </div>
     </template>
