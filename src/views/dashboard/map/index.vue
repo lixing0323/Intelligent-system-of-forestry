@@ -36,6 +36,7 @@ import RightTopCard from './rightTopCard'
 import RightBottomCard from './rightBottomCard'
 import MiddleTopCard from './middleTopCard'
 import FullScreen from './compoennts/fullScreen'
+import TrianglePNG from '@/assets/map/triangle.png'
 
 import { getDomainData } from '@/api/dashboard/domain.js'
 import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
@@ -60,7 +61,7 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
     },
     data() {
       return {
-        HomepagePNG,
+        HomepagePNG, TrianglePNG,
         height: document.documentElement.clientHeight - 5,
         markers: [],
         domain: [],
@@ -187,7 +188,7 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
                         <div class="column-title">荒漠</div><div class="column">1</div><div class="column">123</div><div class="column">158</div>
                     </div>
                  </div>
-                 <div class="info-bottom"><img style="width: 1.1rem;height: 0.5rem" src="https://epidemic-control-1253330314.cos.ap-nanjing.myqcloud.com/nucleic_acid_map/arrow.png" /></div>
+                 <div class="info-bottom"><img style="width: 1.1rem;height: 0.5rem" src="https://yanchang-1253330314.cos.ap-chengdu.myqcloud.com/temp/image/triangle.png" /></div>
                </div>`
       },
       // 设置区域图 610000 = 西安  depth = 地级市
@@ -338,8 +339,9 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
   left: 0;
   width: auto;
   padding: 0;
-  border: solid 1px $--color-font;
-  box-shadow: 0 0 6px 2px $--color-font;
+  border: solid 1px #156519;
+  box-shadow: 0 0 6px 2px #156519;
+  color: #FFFFFF;
   border-radius: 25px;
 
   .row-label {
@@ -357,9 +359,9 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
   div.info-top {
     position: relative;
     border-radius: 15px 15px 0 0;
-    background: none repeat scroll 0 0 $--color-font;
+    background: none repeat scroll 0 0 #156519;
     border-bottom: 1px solid #FFF;
-    color: #333333;
+    color: #FFFFFF;
     font-weight: bold;
     line-height: 25px;
     padding: 0 10px;
@@ -376,7 +378,7 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
     font-size: 12px;
     padding: 10px 6px;
     line-height: 20px;
-    background-color: $--color-font;
+    background-color: #156519;
     border-radius: 0 0 15px 15px;
   }
 
