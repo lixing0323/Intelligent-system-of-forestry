@@ -1,5 +1,5 @@
 <template>
-  <div class="input-card" :style="{ right:'3%', top: '100px', width: '400px', height: '230px' }">
+  <div class="input-card" :style="{ right:'3%', top: '100px', width: '500px', height: '400px' }">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <div class="title">总面积及总碳储量</div>
     <div v-if="!cardLoading" class="rectangle-flex">
@@ -40,9 +40,6 @@ export default {
 
 <style scoped lang="scss">
 @import "~@/styles/element-variables.scss";
-.title {
-  font-size: 20px;
-}
   .input-card {
     background: rgba(46, 53, 71, 0.5);
     background-clip: border-box;
@@ -52,19 +49,24 @@ export default {
     display: block;
     padding: 20px;
     position: absolute;
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      padding: 20px 0 0 20px;
+    }
 
     .rectangle-flex {
       display: flex;
       flex-wrap: wrap;
       .item {
-        margin-top: 10px;
-        width: 160px;
+        margin-top: 20px;
+        width: 210px;
         margin-left: 10px;
         margin-right: 10px;
         vertical-align: middle;
       }
       .top {
-        margin-top: 20px;
+        margin-top: 30px;
       }
     }
   }

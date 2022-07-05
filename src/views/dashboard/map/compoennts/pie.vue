@@ -32,8 +32,8 @@ export default {
   computed: {
     styleObject() {
       return {
-        width: '360px',
-        height: '150px'
+        width: '350px',
+        height: '280px'
       }
     }
   },
@@ -55,6 +55,13 @@ export default {
     },
     setData() {
       const option = {
+        grid: {
+          x: 20,
+          y: 20,
+          x2: 20,
+          y2: 20,
+          borderWidth: 10
+        },
         title: {
           text: this.title,
           left: 'center'
@@ -65,9 +72,8 @@ export default {
         },
         legend: { show: false },
         series: [{
-          top: 20,
           type: 'pie',
-          radius: ['50%', '90%'],
+          radius: ['40%', '70%'],
           hoverAnimation: false,
           emphasis: {
             itemStyle: {
@@ -83,14 +89,14 @@ export default {
               rich: {
                 a: {
                   color: '#333',
-                  fontSize: 16
+                  fontSize: 20
                 },
                 b: {
-                  fontSize: 12,
+                  fontSize: 18,
                   color: '#FFFFFF'
                 },
                 c: {
-                  fontSize: 16,
+                  fontSize: 20,
                   lineHeight: 30
                 }
               }

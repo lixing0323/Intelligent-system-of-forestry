@@ -38,8 +38,8 @@ export default {
   computed: {
     styleObject() {
       return {
-        width: '180px',
-        height: '110px'
+        width: '230px',
+        height: '130px'
       }
     }
   },
@@ -58,14 +58,20 @@ export default {
     initCharts() {
       this.charts = ECharts.init(document.getElementById(this.id))
       this.setData()
-      this.title = '38%'
+      this.title = '28%'
     },
     setData() {
       const option = {
+        grid: {
+          x: 20,
+          y: 20,
+          x2: 20,
+          y2: 20,
+          borderWidth: 10
+        },
         title: {
           text: this.mainTitle,
           subtext: this.subTitle,
-          top: 35,
           x: 'center',
           y: 'center',
           textStyle: {
@@ -79,7 +85,6 @@ export default {
             color: '#FFFFFF',
             verticalAlign: 'top'
           } // 副标题
-
         },
         tooltip: {
           trigger: 'axis',

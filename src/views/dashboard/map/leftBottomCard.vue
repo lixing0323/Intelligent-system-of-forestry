@@ -1,5 +1,5 @@
 <template>
-  <div class="input-card" :style="{left:'3%', bottom: '3%', width: '400px', height: '330px' }">
+  <div class="input-card" :style="{left:'3%', bottom: '3%', width: '500px', height: '400px' }">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <template v-if="!cardLoading">
       <div class="title">样地碳汇量/碳储量占比</div>
@@ -72,15 +72,17 @@ export default {
     position: absolute;
     padding: 20px;
     .title {
-      font-size: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 20px 0 0 20px;
     }
   }
   .circle-flex {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 10px;
     .item {
-      width: 180px;
+      width: 230px;
+      margin-top: 10px;
     }
   }
   .pie-dot {

@@ -24,6 +24,11 @@ Vue.prototype.$echarts = echarts
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
 import dataV from '@jiaminghi/data-view'
+import VueVideoPlayer from 'vue-video-player'
+
+// require videojs style
+import 'video.js/dist/video-js.css'
+// import 'vue-video-player/src/custom-theme.css'
 
 import * as filters from './filters' // global filters
 
@@ -91,6 +96,7 @@ Vue.config.productionTip = false
 
 Vue.use(Viewer, { defaultOptions: { zIndex: 9999 }})
 Vue.use(dataV)
+Vue.use(VueVideoPlayer)
 
 new Vue({
   el: '#app',

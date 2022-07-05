@@ -1,7 +1,7 @@
 <template>
-  <div class="land-card" :style="{ left:'3%', bottom: '3%', width: `${width}px`, height: '400px' }">
+  <div class="land-card" :style="{ left:'3%', bottom: '3%', width: `${width}px`, height: '420px' }">
     <div class="title">样地基本信息
-      <el-button class="bt" type="primary">样地统计数据</el-button>
+      <el-button class="bt" type="primary" @click="gotoPlot()">样地统计数据</el-button>
     </div>
     <div class="icon-flex">
       <div class="img-dev"><el-image class="img" :src="hotImage" /></div>
@@ -119,13 +119,15 @@ export default {
   data() {
     return {
       hotImage: TreeImg,
-      width: document.documentElement.clientWidth / 3
-
+      width: document.documentElement.clientWidth / 4 + 60
     }
   },
   created() {
   },
   methods: {
+    gotoPlot() {
+      this.$router.push({ name: 'PlotDetails', params: { id: '1' }})
+    }
   }
 }
 </script>
@@ -145,7 +147,7 @@ export default {
   .title {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     .bt {
       float: right;
     }

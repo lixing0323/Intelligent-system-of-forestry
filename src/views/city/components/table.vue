@@ -1,5 +1,5 @@
 <template>
-  <div class="input-card" :style="{left:'3%', bottom: '3%', width: `${width}px`, height: '330px'}">
+  <div class="input-card" :style="{left:'3%', bottom: '3%', width: `${width}px`, height: '430px'}">
     <div class="title">样地数据统计</div>
     <ht-action-panel class="table-container business-search">
       <template slot="left">
@@ -61,6 +61,8 @@ export default {
       { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
       { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
       { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
+      { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
+      { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
       { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' }
     ]
   },
@@ -89,7 +91,9 @@ export default {
   padding: 20px;
   position: absolute;
   .title {
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px 0 0 20px;
   }
   .table-container {
     margin-top: 20px;

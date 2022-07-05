@@ -29,13 +29,14 @@
         </div>
       </div>
     </div>
-    <div v-if="showBar" class="area-card" :style="{left: left, top: '205px', width: `${width}px`}">
+
+    <div v-if="showBar" class="area-card" :style="{left: left, width: `${width}px`}">
       <div class="title">各区域分布
         <el-radio-group v-model="radio" class="tree-check-radio area-radio" @change="changeRadio">
           <el-radio v-for="(l, index) in labels" :key="index" :label="l">{{ l }}</el-radio>
         </el-radio-group>
       </div>
-      <echarts-bar class="echarts-bar" :width="width+40" :chart-data="items" :height="80" />
+      <echarts-bar class="echarts-bar" :chart-data="items" :width="width-40" :height="150" />
     </div>
   </div>
 
@@ -113,6 +114,8 @@ export default {
 .province-title {
   display: flex;
   flex-direction: row;
+  font-size: 22px;
+  font-weight: bold;
   color: $--color-font;;
   .center-title {
     padding: 0 15px;
@@ -126,10 +129,10 @@ export default {
   margin: auto;
 }
 .province-flex-card {
+  position: relative;
   display: flex;
   flex-wrap: nowrap;
-  margin-top: 10px;
-}
+  margin-top: 20px;
   .input-card {
     background: rgba(0, 0, 0, 0.5);
     background-clip: border-box;
@@ -138,35 +141,38 @@ export default {
     border-radius: 0.4rem;
     vertical-align: middle;
     padding-top: 5px;
-    height: 55px;
+    height: 100px;
     flex: 1;
 
     .label {
-      font-size: 12px;
+      font-size: 18px;
       color: #BEBEBE;
+      margin-top: 15px;
     }
     .number {
       color: $--color-font;
       margin-top: 5px;
       .value {
-        font-size: 18px;
+        font-size: 26px;
       }
       .unit {
-        font-size: 12px;
+        font-size: 16px;
       }
     }
   }
+}
+
 .area-card {
   background: rgba(46, 53, 71, 0.5);
   background-clip: border-box;
   border-width: 0;
   color: $--color-font;
   border-radius: 0.4rem;
-  display: block;
-  padding: 10px;
-  position: absolute;
+  padding: 20px;
+  margin-top: 280px;
+  position: relative;
   .title {
-    font-size: 14px;
+    font-size: 18px;
   }
   .area-radio {
     float: right;

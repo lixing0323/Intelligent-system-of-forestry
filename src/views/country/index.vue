@@ -11,7 +11,7 @@
     <left-top-card />
     <right-top-card />
     <left-bottom-card :data="plot" />
-    <middle-top-card :show-bar="false" :show-statistics="false" />
+    <middle-top-card :show-bar="false" :show-statistics="false" title="渭南市澄城县" />
     <middle-bottom-card />
     <right-bottom-card />
   </div>

@@ -1,9 +1,8 @@
 <template>
-  <div class="input-card" :style="{right:'3%', bottom: '3%', width: '400px', height: '330px' }">
+  <div class="input-card" :style="{right:'3%', bottom: '3%', width: '500px', height: '400px' }">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
     <template v-if="!cardLoading">
       <div class="title">样地碳储量排名</div>
-      labels
       <div class="progress-div">
         <div class="right-title">碳储量(吨)</div>
         <progress-line v-for="(item, index) in items" :key="index" :title="item.title" :value="item.value" />
@@ -35,7 +34,10 @@ export default {
         { title: '澄城阿銮寨', value: 8121 },
         { title: '澄城南社', value: 7862 },
         { title: '澄城团结', value: 5023 },
-        { title: '澄城权家河', value: 3878 }
+        { title: '澄城权家河', value: 1878 },
+        { title: '澄城寺前镇', value: 2312 },
+        { title: '澄城赵庄镇', value: 3878 },
+        { title: '澄城石沟镇', value: 1001 }
       ]
     }
   },
@@ -71,7 +73,9 @@ export default {
     display: block;
     position: absolute;
     .title {
-      font-size: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      padding: 20px 0 0 20px;
     }
     .tree-check-radio {
       margin-top: 10px;

@@ -55,10 +55,6 @@ export default {
       if (index !== -1) {
         this.cityName = data[index].name
       }
-    },
-    // 返回上一级
-    goBack() {
-      this.$router.go(-1)
     }
   }
 }

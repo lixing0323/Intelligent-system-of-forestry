@@ -42,11 +42,11 @@ export default {
 <style lang="scss" scoped>
 @import "~@/styles/element-variables.scss";
 .sample-rectangle-container {
-  width: 120px;
+  width: 151px;
   height: 50px;
   text-align: center;
   margin-bottom: 10px;
-  margin-right: 10px;
+  margin-right: 15px;
   background-color: #191E2C !important;
   .sample-value {
     color: #2A9A30;

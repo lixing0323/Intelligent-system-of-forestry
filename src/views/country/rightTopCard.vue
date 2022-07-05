@@ -1,25 +1,21 @@
 <template>
-  <div>
-    <div class="image-card" :style="{ right:'3%', width: '400px',top: '100px'}">
-      <el-image :src="HotPNG" fit="fill" class="img" />
-    </div>
+  <div class="video-container">
+    <div class="live"><live-content /></div>
 
-    <div class="image-card live" :style="{right:'3%', width: '400px', top: '330px'}">
-      <el-image :src="SkyPNG" fit="fill" class="img" />
-    </div>
+    <div class="video"><video-content /></div>
   </div>
 </template>
 
 <script>
-import HotPNG from '@/assets/city/2.png'
-import SkyPNG from '@/assets/city/1.png'
+import VideoContent from '@/views/country/bottom/components/video'
+import LiveContent from '@/views/country/bottom/components/live'
+
 export default {
-  components: { },
+  components: { LiveContent, VideoContent },
   props: {
   },
   data() {
     return {
-      HotPNG, SkyPNG
     }
   },
   created() {
@@ -30,18 +26,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .image-card {
-    background: rgba(46, 53, 71, 0.5);
-    background-clip: border-box;
-    border-width: 0;
-    border-radius: 0.4rem;
-    display: block;
-    padding: 5px;
-    position: absolute;
-    height: 200px;
+.video-container {
+  position: absolute;
+  top: 200px;
+  right: 10%;
+  left: 10%;
+  display: flex;
+  flex-wrap: nowrap;
+  .video {
+    margin-left: 200px;
   }
-  .img {
-    width: 100%;
-    height: 100%;
-  }
+}
+
 </style>

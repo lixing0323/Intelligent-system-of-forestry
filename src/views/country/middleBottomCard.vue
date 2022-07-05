@@ -1,5 +1,5 @@
 <template>
-  <div class="wood-card" :style="{ left: `${left}px`, bottom: '3%', width: `${width}px`, height: '400px' }">
+  <div class="wood-card" :style="{ left: `${left}px`, bottom: '3%', width: `${width}px`, height: '420px' }">
     <div class="title">样木基本信息</div>
     <ht-table :data="list" :stripe="false" :row-class-name="tableRowClassName">
       <ht-table-column prop="id" label="林木号" />
@@ -62,6 +62,6 @@ export default {
   .title {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 </style>

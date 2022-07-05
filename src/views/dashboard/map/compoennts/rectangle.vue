@@ -42,20 +42,20 @@ export default {
 @import "~@/styles/element-variables.scss";
   .rectangle {
     background-color: #191E2C;
-    width: 160px;
-    height: 70px;
+    width: 200px;
+    height: 120px;
 
     .rectangle-title {
-      font-size: 12px;
+      font-size: 20px;
       color: #BEBEBE;
       text-align: center;
-      padding-top: 15px;
+      padding-top: 30px;
     }
     .rectangle-value {
       margin-top: 5px;
       text-align: center;
       .number {
-        font-size: 18px;
+        font-size: 24px;
         color: $--color-font;
         font-weight: bold;
       }

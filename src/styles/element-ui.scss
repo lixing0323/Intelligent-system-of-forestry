@@ -191,6 +191,11 @@ li.el-timeline-item{
 .business-map {
   background-color: $--background-color;
   height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+
   .exit {
     display: block;
     color: #2A9A30;

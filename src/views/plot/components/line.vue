@@ -5,7 +5,7 @@
 </template>
 
 <script>
-// 柱状图
+// 折线图
 import * as ECharts from 'echarts'
 
 export default {
@@ -15,25 +15,17 @@ export default {
       type: [Object, Array],
       default: undefined
     },
-    mainTitle: {
-      type: String,
-      default: ''
-    },
-    subTitle: {
-      type: String,
-      default: ''
-    },
     id: {
       type: [Number, String],
-      default: 'echarts-bar'
+      default: 'echarts-line'
     },
     width: {
       type: Number,
-      default: undefined
+      default: 800
     },
     height: {
       type: Number,
-      default: undefined
+      default: 300
     }
   },
   data() {
@@ -68,45 +60,25 @@ export default {
     },
     setData() {
       const option = {
-        grid: {
-          x: 20,
-          y: 20,
-          x2: 20,
-          y2: 20,
-          borderWidth: 10
+        legend: {
+          data: ['树径初始值', '树径增长值'],
+          textStyle: {
+            color: '#fff',
+            fontSize: 16
+          }
         },
-        legend: { show: false },
         xAxis: {
           type: 'category',
-          data: ['澄城', '潼关', '大荔', '合阳', '蒲城', '富平', '白水'],
-          axisLine: {
-            show: false
-          },
-          axisTick: {
-            show: false
-          },
-          splitLine: {
-            show: false
-          }
+          boundaryGap: false,
+          data: ['2021/08/10', '2021/09/10', '2021/10/10', '2021/11/10', '2021/12/10', '2022/01/10', '2022/02/10']
         },
         yAxis: {
           type: 'value',
-          show: false
-        },
-        series: [
-          {
-            data: this.chartData,
-            type: 'bar',
-            showBackground: true,
-            itemStyle: {
-              color: '#78E97D'
-            },
-            barWidth: '30%',
-            backgroundStyle: {
-              color: '#0D1115'
-            }
+          splitLine: {
+            lineStyle: { color: '#1B232C' }
           }
-        ]
+        },
+        series: this.chartData
       }
 
       this.charts.setOption(option)
