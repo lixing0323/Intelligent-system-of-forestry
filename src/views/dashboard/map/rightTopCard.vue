@@ -1,13 +1,16 @@
 <template>
   <div class="input-card" :style="{ right:'3%', top: '100px', width: '500px', height: '400px' }">
     <dv-loading v-if="cardLoading">加载中</dv-loading>
-    <div class="title">总面积及总碳储量</div>
-    <div v-if="!cardLoading" class="rectangle-flex">
-      <div class="item"><rectangle :title="'林地面积/碳储'" :area="100" :weight="forestry.sink_value" /></div>
-      <div class="item"> <rectangle :title="'草原面积/碳储'" :area="200" :weight="600" /></div>
-      <div class="item top"><rectangle :title="'湿地面积/碳储'" :area="300" :weight="600" /></div>
-      <div class="item top"><rectangle :title="'荒漠面积/碳储'" :area="400" :weight="700" /></div>
-    </div>
+
+    <template v-if="!cardLoading">
+      <div class="title">总面积及总碳储量</div>
+      <div class="rectangle-flex">
+        <div class="item"><rectangle :title="'林地面积/碳储'" :area="1247.6" :weight="2034.26" /></div>
+        <div class="item"> <rectangle :title="'草原面积/碳储'" :area="222.87" :weight="479.37" /></div>
+        <div class="item top"><rectangle :title="'湿地面积/碳储'" :area="280.27" :weight="2453.7" /></div>
+        <div class="item top"><rectangle :title="'荒漠面积/碳储'" :area="30.85" :weight="0.57" /></div>
+      </div>
+    </template>
   </div>
 </template>
 

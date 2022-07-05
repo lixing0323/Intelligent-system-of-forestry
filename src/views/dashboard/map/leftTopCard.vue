@@ -27,10 +27,10 @@ export default {
   },
   created() {
     this.data = [
-      { value: 25, name: '草原', label: { color: '#E57F2C' }, itemStyle: { color: '#D1985C' }},
-      { value: 25, name: '荒漠', label: { color: '#4374CB' }, itemStyle: { color: '#4374CB' }},
-      { value: 25, name: '湿地', label: { color: '#2CE57F' }, itemStyle: { color: '#5CC76A' }},
-      { value: 25, name: '林地', label: { color: '#17C3DA' }, itemStyle: { color: '#28A6E9' }}
+      { value: 12.51, name: '草原', label: { color: '#E57F2C' }, itemStyle: { color: '#D1985C' }},
+      { value: 1.73, name: '荒漠', label: { color: '#4374CB' }, itemStyle: { color: '#4374CB' }},
+      { value: 15.73, name: '湿地', label: { color: '#2CE57F' }, itemStyle: { color: '#5CC76A' }},
+      { value: 70.3, name: '林地', label: { color: '#17C3DA' }, itemStyle: { color: '#28A6E9' }}
     ]
   },
   methods: {
@@ -55,7 +55,7 @@ export default {
       padding: 20px 0 0 20px;
     }
     .pie {
-      margin: 20px 50px;
+      margin: 10px;
     }
   }
 </style>

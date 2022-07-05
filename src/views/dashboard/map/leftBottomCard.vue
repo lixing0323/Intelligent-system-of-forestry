@@ -8,10 +8,10 @@
         <span class="store"> <i class="store-i" /> 碳储量</span>
       </div>
       <div class="circle-flex">
-        <circle-chart id="first" :chart-data="first" :main-title="'38.26%'" :sub-title="'林地'" class="item" />
-        <circle-chart id="second" :chart-data="second" :main-title="'38.26%'" :sub-title="'草原'" class="item" />
-        <circle-chart id="third" :chart-data="third" :main-title="'38.26%'" :sub-title="'湿地'" class="item" />
-        <circle-chart id="four" :chart-data="four" :main-title="'38.26%'" :sub-title="'荒漠'" class="item" />
+        <circle-chart id="first" :chart-data="first" :main-title="'40.95%'" :sub-title="'林地'" class="item" />
+        <circle-chart id="second" :chart-data="second" :main-title="'9.65%'" :sub-title="'草原'" class="item" />
+        <circle-chart id="third" :chart-data="third" :main-title="'49.39%'" :sub-title="'湿地'" class="item" />
+        <circle-chart id="four" :chart-data="four" :main-title="'0.01%'" :sub-title="'荒漠'" class="item" />
       </div>
     </template>
 

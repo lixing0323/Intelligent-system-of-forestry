@@ -90,7 +90,7 @@ import { getCarbonSinkData } from "@/api/dashboard/carbonSink";
           keyboardEnable: false,
           mapStyle: "amap://styles/grey",
           center: [108.947044, 35.98445],
-          zoom: 6.5,
+          zoom: 7,
           pitch: 0,
           viewMode: '3D', // 地图模式
         });

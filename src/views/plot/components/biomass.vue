@@ -49,13 +49,13 @@ export default {
   },
   created() {
     this.list = [
-      { area: '样本1', width: '34cm', height: '16m', count: '16%', time: '30%', comment: '备注1' },
-      { area: '样本1', width: '34cm', height: '16m', count: '16%', time: '30%', comment: '备注1' },
-      { area: '样本1', width: '34cm', height: '16m', count: '16%', time: '30%', comment: '备注1' },
-      { area: '样本1', width: '34cm', height: '16m', count: '16%', time: '30%', comment: '备注1' },
-      { area: '样本1', width: '34cm', height: '16m', count: '16%', time: '30%', comment: '备注1' },
-      { area: '样本1', width: '34cm', height: '16m', count: '16%', time: '30%', comment: '备注1' },
-      { area: '样本1', width: '34cm', height: '16m', count: '16%', time: '30%', comment: '备注1' }
+      { area: '样本1', width: '52.7cm', height: '0.02m', count: '85%', time: '75%', comment: '备注1' },
+      { area: '样本1', width: '35.4cm', height: '0.01cm', count: '85%', time: '80%', comment: '备注1' },
+      { area: '样本1', width: '96cm', height: '0.02cm', count: '90%', time: '70%', comment: '备注1' },
+      { area: '样本1', width: '64cm', height: '0.05cm', count: '95%', time: '40%', comment: '备注1' },
+      { area: '样本1', width: '34cm', height: '16cm', count: '16%', time: '30%', comment: '备注1' },
+      { area: '样本1', width: '34cm', height: '16cm', count: '16%', time: '30%', comment: '备注1' },
+      { area: '样本1', width: '34cm', height: '16cm', count: '16%', time: '30%', comment: '备注1' }
     ]
     this.lineData = [
       { name: '树径初始值', type: 'line', stack: 'Total', data: [120, 132, 101, 134, 90, 230, 210],

@@ -16,14 +16,14 @@
         <div class="input-card" style="margin: 0 20px">
           <div class="label">总面积</div>
           <div class="number">
-            <span><ht-count-number :start-val="0" :end-val="2090" class="value" /></span>
+            <span><ht-count-number :start-val="0" :end-val="1781.58" class="value" /></span>
             <span class="unit">公顷</span>
           </div>
         </div>
         <div class="input-card">
           <div class="label">总储量</div>
           <div class="number">
-            <span><ht-count-number :start-val="0" :end-val="2090" class="value" /></span>
+            <span><ht-count-number :start-val="0" :end-val="4967.9" class="value" /></span>
             <span class="unit">吨</span>
           </div>
         </div>

@@ -32,8 +32,8 @@ export default {
   computed: {
     styleObject() {
       return {
-        width: '350px',
-        height: '280px'
+        width: '420px',
+        height: '300px'
       }
     }
   },
@@ -56,10 +56,10 @@ export default {
     setData() {
       const option = {
         grid: {
-          x: 20,
-          y: 20,
-          x2: 20,
-          y2: 20,
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 0,
           borderWidth: 10
         },
         title: {
@@ -84,8 +84,10 @@ export default {
           },
           label: {
             normal: {
-              formatter: '{b|{b}}  \n  {c|{c}%}',
+              formatter: '{b|{b}} {c|{c}%}',
               borderWidth: 20,
+              padding: [0, -35],
+              overflow: 'none',
               rich: {
                 a: {
                   color: '#333',
