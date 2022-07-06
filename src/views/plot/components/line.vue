@@ -59,9 +59,11 @@ export default {
       this.setData()
     },
     setData() {
+      const legendData = this.chartData.map(item => (item.name))
+
       const option = {
         legend: {
-          data: ['树径初始值', '树径增长值'],
+          data: legendData,
           textStyle: {
             color: '#fff',
             fontSize: 16

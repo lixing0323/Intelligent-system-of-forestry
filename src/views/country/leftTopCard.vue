@@ -19,7 +19,7 @@ export default {
   components: { PieChart },
   data() {
     return {
-      tabs: ['样地1', '样地2', '样地3', '样地4'],
+      tabs: ['澄城壶梯山', '澄城樊家川', '澄城邓母'],
       data: []
     }
   },

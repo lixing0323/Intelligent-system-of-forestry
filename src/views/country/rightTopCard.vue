@@ -1,5 +1,5 @@
 <template>
-  <div class="video-container">
+  <div class="video-container vjs-custom-skin">
     <div class="live"><live-content /></div>
 
     <div class="video"><video-content /></div>

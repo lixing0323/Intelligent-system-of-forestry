@@ -1,32 +1,10 @@
 <template>
   <div>
     <div class="province-label" :style="{left: left, top: '100px', width: `${width}px`, 'text-align': 'center' }">
-      <div class="province-title">
-        <div><span class="center-title">{{ title }}</span></div>
-      </div>
+      <center-title :title="title" />
 
       <div v-if="showStatistics" class="province-flex-card">
-        <div class="input-card">
-          <div class="label">样地总数</div>
-          <div class="number">
-            <span><ht-count-number :start-val="0" :end-val="115" class="value" :decimals="0" /></span>
-            <span class="unit" />
-          </div>
-        </div>
-        <div class="input-card" style="margin: 0 20px">
-          <div class="label">总面积</div>
-          <div class="number">
-            <span><ht-count-number :start-val="0" :end-val="1781.58" class="value" /></span>
-            <span class="unit">万公顷</span>
-          </div>
-        </div>
-        <div class="input-card">
-          <div class="label">总储量</div>
-          <div class="number">
-            <span><ht-count-number :start-val="0" :end-val="4967.9" class="value" /></span>
-            <span class="unit">百万吨</span>
-          </div>
-        </div>
+        <total-statistics :count="115" :area="1781.58" :quantity="4967.90" />
       </div>
     </div>
 
@@ -44,11 +22,12 @@
 
 <script>
 // 顶部中间位置
-import HtCountNumber from '@/components/HtCountNumber'
 import EchartsBar from '@/views/dashboard/map/compoennts/bar'
+import TotalStatistics from './compoennts/totalStatistics'
+import CenterTitle from './compoennts/centerTitle'
 
 export default {
-  components: { HtCountNumber, EchartsBar },
+  components: { EchartsBar, CenterTitle, TotalStatistics },
   props: {
     title: {
       type: String,
@@ -84,7 +63,7 @@ export default {
       { value: 25, name: '荒漠', label: { color: '#2CE57F' }, itemStyle: { color: '#5CC76A' }},
       { value: 25, name: '湿地', label: { color: '#17C3DA' }, itemStyle: { color: '#28A6E9' }}
     ]
-    this.items = [120, 200, 150, 80, 70, 110, 130]
+    this.items = [120, 190, 150, 80, 70, 110, 130]
   },
   methods: {
     changeRadio(val) {
@@ -110,56 +89,9 @@ export default {
   position: absolute;
   margin-top: 10px;
 }
-
-.province-title {
-  display: flex;
-  flex-direction: row;
-  font-size: 22px;
-  font-weight: bold;
-  color: $--color-font;;
-  .center-title {
-    padding: 0 15px;
-  }
-}
-.province-title:before,
-.province-title:after {
-  content: "";
-  flex: 1 1;
-  border-bottom: 1px solid $--color-font;
-  margin: auto;
-}
 .province-flex-card {
   position: relative;
-  display: flex;
-  flex-wrap: nowrap;
   margin-top: 20px;
-  .input-card {
-    background: rgba(0, 0, 0, 0.5);
-    background-clip: border-box;
-    border-width: 0;
-    color: $--color-font;
-    border-radius: 0.4rem;
-    vertical-align: middle;
-    padding-top: 5px;
-    height: 100px;
-    flex: 1;
-
-    .label {
-      font-size: 18px;
-      color: #BEBEBE;
-      margin-top: 15px;
-    }
-    .number {
-      color: $--color-font;
-      margin-top: 5px;
-      .value {
-        font-size: 26px;
-      }
-      .unit {
-        font-size: 16px;
-      }
-    }
-  }
 }
 
 .area-card {

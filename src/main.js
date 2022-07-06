@@ -24,8 +24,8 @@ Vue.prototype.$echarts = echarts
 import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
 import dataV from '@jiaminghi/data-view'
-import VueVideoPlayer from 'vue-video-player'
 
+import VueVideoPlayer from 'vue-video-player'
 // require videojs style
 import 'video.js/dist/video-js.css'
 import 'vue-video-player/src/custom-theme.css'

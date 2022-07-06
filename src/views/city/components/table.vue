@@ -7,6 +7,7 @@
         <el-date-picker
           v-model="listQuery.date"
           type="daterange"
+          placement="bottom-start"
           range-separator="至"
           start-placeholder="开始日期"
           end-placeholder="结束日期"
@@ -49,7 +50,7 @@ export default {
         }
       },
       listQuery: {
-        date: ''
+        date: []
       }
     }
   },
@@ -57,12 +58,12 @@ export default {
   },
   created() {
     this.list = [
-      { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
-      { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
-      { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
-      { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
-      { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
-      { area: '澄城县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' }
+      { area: '临渭区', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
+      { area: '韩城市', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
+      { area: '华阴市', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
+      { area: '华州区', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
+      { area: '潼关县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' },
+      { area: '大荔县', width: '34cm', height: '16m', count: '18', time: '2022-07-04 10:41' }
     ]
   },
   methods: {

@@ -82,8 +82,8 @@ export default {
         series: [{
           type: 'pie',
           radius: ['40%', '70%'],
-          hoverAnimation: false,
           emphasis: {
+            scale: false,
             itemStyle: {
               shadowBlur: 10,
               shadowOffsetX: 0,
@@ -91,29 +91,22 @@ export default {
             }
           },
           label: {
-            normal: {
-              formatter: '{b|{b}} {c|{c}%}',
-              borderWidth: 20,
-              padding: [0, -35],
-              overflow: 'none',
-              rich: {
-                a: {
-                  color: '#333',
-                  fontSize: 20
-                },
-                b: {
-                  fontSize: 18,
-                  color: '#FFFFFF'
-                },
-                c: {
-                  fontSize: 20,
-                  lineHeight: 30
-                }
+            formatter: '{b}: {c}\n({d}%)',
+            borderWidth: 20,
+            rich: {
+              a: {
+                color: '#333',
+                fontSize: 20
+              },
+              b: {
+                fontSize: 18,
+                color: '#FFFFFF'
+              },
+              c: {
+                fontSize: 20,
+                lineHeight: 30
               }
             }
-          },
-          labelLine: {
-            show: false
           },
           data: this.chartData
         }]

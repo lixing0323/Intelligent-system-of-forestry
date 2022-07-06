@@ -2,18 +2,15 @@
   <div class="player">
     <video-player
       ref="videoPlayer"
-      class="video-player-box"
+      class="video-player"
       :options="playerOptions"
       :playsinline="true"
-      @play="onPlayerPlay($event)"
-      @pause="onPlayerPause($event)"
-      @statechanged="playerStateChanged($event)"
-      @ready="playerReadied"
     />
   </div>
 </template>
 
 <script>
+import VideoImage from '@/assets/city/2.png'
 
 export default {
   components: { },
@@ -26,14 +23,14 @@ export default {
         height: '225',
         width: '400',
         autoplay: true,
+        language: 'zh-CN',
         muted: true,
-        language: 'en',
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         sources: [{
           type: 'video/mp4',
           src: 'https://www.yiyuen.com/e/file/view/334735'
         }],
-        poster: '/assets/city/1.png'
+        poster: VideoImage
       }
     }
   },
@@ -45,33 +42,9 @@ export default {
   created() {
   },
   methods: {
-    // listen event
-    onPlayerPlay(player) {
-      // console.log('player play!', player)
-    },
-    onPlayerPause(player) {
-      // console.log('player pause!', player)
-    },
-    // ...player event
-
-    // or listen state event
-    playerStateChanged(playerCurrentState) {
-      // console.log('player current update state', playerCurrentState)
-    },
-
-    // player is ready
-    playerReadied(player) {
-      // you can use it to do something...
-      // player.[methods]
-    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .video-player-box {
-    height: 200px;
-    width: 400px;
-  }
-
 </style>

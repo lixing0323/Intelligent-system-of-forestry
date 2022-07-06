@@ -1,9 +1,11 @@
 <template>
-  <video-player
-    class="vjs-custom-skin"
-    :options="playerOptions"
-    @ready="playerReadied"
-  />
+  <div class="player">
+    <video-player
+      class="video-player vjs-custom-skin"
+      :options="playerOptions"
+      @ready="playerReadied"
+    />
+  </div>
 </template>
 
 <script>
@@ -13,6 +15,7 @@ import videojs from 'video.js'
 window.videojs = videojs
 // hls plugin for videojs6
 require('videojs-contrib-hls/dist/videojs-contrib-hls.js')
+import LiveImage from '@/assets/city/1.png'
 
 export default {
   components: { },
@@ -24,6 +27,7 @@ export default {
         // videojs and plugin options
         height: '225',
         width: '400',
+        language: 'zh-CN',
         sources: [{
           withCredentials: false,
           type: 'application/x-mpegURL',
@@ -35,13 +39,8 @@ export default {
         },
         flash: { hls: { withCredentials: false }},
         html5: { hls: { withCredentials: false }},
-        poster: '/assets/city/2.png'
+        poster: LiveImage
       }
-    }
-  },
-  computed: {
-    player() {
-      return this.$refs.videoPlayer.player
     }
   },
   created() {
@@ -50,7 +49,6 @@ export default {
     playerReadied(player) {
       player.tech({ IWillNotUseThisInPlugins: true }).hls
       player.tech_.hls.xhr.beforeRequest = function(options) {
-        // console.log(options)
         return options
       }
     }
@@ -59,9 +57,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .video-player-box {
-    height: 200px;
-    width: 400px;
-  }
-
+.vjs-custom-skin > .video-js .vjs-big-play-button {
+  background-color: rgba(0, 0, 0, 0.45);
+  font-size: 2em;
+  border-radius: 50%;
+  height: 2em !important;
+  line-height: 2em !important;
+  margin-top: -1em !important;
+  margin-left: -1em !important;
+  width: 2em !important;
+  outline: none;
+}
 </style>

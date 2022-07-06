@@ -1,6 +1,6 @@
 <template>
   <div class="progress">
-    <div class="title">{{ title }}</div>
+    <div class="title" @click="gotoPlot()">{{ title }}</div>
     <div class="line" :style="`width: ${lineWidth}px`">
       <span class="color" :style="`width: ${getProgressWidth()}px`" />
       <span class="value"> <ht-count-number :start-val="0" :end-val="value" class="value" /></span>
@@ -36,6 +36,9 @@ export default {
       if (this.value) {
         return this.value * this.lineWidth / this.max
       }
+    },
+    gotoPlot() {
+      this.$router.push({ name: 'PlotDetails', params: { id: '1' }})
     }
   }
 }
@@ -52,6 +55,7 @@ export default {
       font-size: 12px;
       color: #D6D6D6;
       width: 100px;
+      cursor: pointer;
     }
     .line {
       display: inline-block;

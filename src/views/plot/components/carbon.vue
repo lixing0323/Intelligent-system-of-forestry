@@ -28,7 +28,7 @@ export default {
   created() {
     this.lineData = [
       { name: '树径初始值', type: 'line', stack: 'Total', data: [120, 132, 101, 134, 90, 230, 210],
-        itemStyle: { normal: { lineStyle: { color: '#2A9A30' }}}
+        itemStyle: { lineStyle: { color: '#2A9A30' }}
       }
     ]
   },

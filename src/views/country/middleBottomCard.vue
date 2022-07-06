@@ -2,11 +2,11 @@
   <div class="wood-card" :style="{ left: `${left}px`, bottom: '3%', width: `${width}px`, height: '420px' }">
     <div class="title">样木基本信息</div>
     <ht-table :data="list" :stripe="false" :row-class-name="tableRowClassName">
-      <ht-table-column prop="id" label="林木号" />
+      <ht-table-column prop="id" label="林木号" width="70" />
       <ht-table-column prop="name" label="树种学名" />
       <ht-table-column prop="cn" label="中文名" />
-      <ht-table-column prop="height" label="树高(m)" />
-      <ht-table-column prop="width" label="胸径(m)" />
+      <ht-table-column prop="height" label="树高(m)" width="80" />
+      <ht-table-column prop="width" label="胸径(m)" width="80" />
     </ht-table>
   </div>
 
@@ -23,13 +23,13 @@ export default {
       left: document.documentElement.clientWidth / 3 + 5,
       list: [
         { id: '001', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
-        { id: '001', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
-        { id: '001', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
-        { id: '001', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
-        { id: '001', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
-        { id: '001', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
-        { id: '001', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
-        { id: '001', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' }
+        { id: '002', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
+        { id: '003', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
+        { id: '004', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
+        { id: '005', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
+        { id: '006', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
+        { id: '007', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
+        { id: '008', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' }
       ]
     }
   },

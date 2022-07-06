@@ -4,7 +4,7 @@
     <back-icon />
     <full-screen />
 
-    <middle-top-card :title="cityName" :show-bar="true" />
+    <middle-top-card title="渭南市" :show-bar="true" />
     <left-top-card :card-loading="rightTopLoading" />
     <right-top-card :card-loading="rightTopLoading" :forestry="forestry" />
     <bottom-card />
@@ -15,8 +15,8 @@
 // 城市
 import HeaderImage from '@/views/dashboard/map/compoennts/header'
 import BackIcon from '@/views/dashboard/map/compoennts/back'
-import LeftTopCard from '@/views/dashboard/map/leftTopCard'
-import RightTopCard from '@/views/dashboard/map/rightTopCard'
+import LeftTopCard from './leftTopCard'
+import RightTopCard from './rightTopCard'
 import MiddleTopCard from '@/views/dashboard/map/middleTopCard'
 import FullScreen from '@/views/dashboard/map/compoennts/fullScreen'
 import BottomCard from './components/table'

@@ -97,13 +97,13 @@ export default {
           label: { show: false },
           labelLine: { show: false },
           data: this.chartData,
-          hoverAnimation: false,
+          emphasis: {
+            scale: false
+          },
           itemStyle: {
-            normal: {
-              color: function(colors) {
-                const colorList = ['#0F1317', '#00D93B']
-                return colorList[colors.dataIndex]
-              }
+            color: function(colors) {
+              const colorList = ['#0F1317', '#00D93B']
+              return colorList[colors.dataIndex]
             }
           }
         },
@@ -113,13 +113,13 @@ export default {
           label: { show: false },
           labelLine: { show: false },
           data: this.chartData,
-          hoverAnimation: false,
+          emphasis: {
+            scale: false
+          },
           itemStyle: {
-            normal: {
-              color: function(colors) {
-                const colorList = ['#0F1317', '#17C3DA']
-                return colorList[colors.dataIndex]
-              }
+            color: function(colors) {
+              const colorList = ['#0F1317', '#17C3DA']
+              return colorList[colors.dataIndex]
             }
           }
         }]
