@@ -9,8 +9,13 @@
         </template>
       </ht-action-panel>
       <ht-table ref="table" v-loading="isLoading" height="auto" class="table" :data="list" :row-class-name="tableRowClassName">
+        <ht-table-column label="请选择" width="60">
+          <template v-slot="{ row }">
+            <el-radio v-model="radioSelectIndex" :label="row.id"> &nbsp;</el-radio>
+          </template>
+        </ht-table-column>
         <ht-table-column type="index" width="55" label="序号" />
-        <ht-table-column label="样本名称" prop="area" min-width="100" />
+        <ht-table-column label="样本名称" prop="name" min-width="100" />
         <ht-table-column label="树径初始值" prop="width" min-width="100" />
         <ht-table-column label="树径增长值" prop="height" min-width="100" />
         <ht-table-column label="电量" prop="count" min-width="100" />
@@ -20,7 +25,7 @@
     </div>
 
     <div class="record input-card" :style="{left:'3%', right: '3%', width: `${width}px`}">
-      <div class="title">样本1趋势记录</div>
+      <div class="title">【{{ recordTitle }}】趋势记录</div>
       <line-e-charts :width="width" :height="300" :chart-data="lineData" />
     </div>
   </div>
@@ -42,20 +47,25 @@ export default {
       listQuery: {
         name: ''
       },
-      lineData: []
+      lineData: [],
+      radioSelectIndex: '1'
     }
   },
   computed: {
+    recordTitle() {
+      const index = this.list.findIndex(item => item.id === this.radioSelectIndex)
+      return index !== -1 ? this.list[index].name : this.list[0].name
+    }
   },
   created() {
     this.list = [
-      { area: '样本1', width: '52.7cm', height: '0.02m', count: '85%', time: '75%', comment: '备注1' },
-      { area: '样本1', width: '35.4cm', height: '0.01cm', count: '85%', time: '80%', comment: '备注1' },
-      { area: '样本1', width: '96cm', height: '0.02cm', count: '90%', time: '70%', comment: '备注1' },
-      { area: '样本1', width: '64cm', height: '0.05cm', count: '95%', time: '40%', comment: '备注1' },
-      { area: '样本1', width: '34cm', height: '16cm', count: '16%', time: '30%', comment: '备注1' },
-      { area: '样本1', width: '34cm', height: '16cm', count: '16%', time: '30%', comment: '备注1' },
-      { area: '样本1', width: '34cm', height: '16cm', count: '16%', time: '30%', comment: '备注1' }
+      { id: '1', name: '样本1', width: '52.7cm', height: '0.02m', count: '85%', time: '75%', comment: '备注1' },
+      { id: '2', name: '样本2', width: '35.4cm', height: '0.01cm', count: '85%', time: '80%', comment: '备注1' },
+      { id: '3', name: '样本3', width: '96cm', height: '0.02cm', count: '90%', time: '70%', comment: '备注1' },
+      { id: '4', name: '样本4', width: '64cm', height: '0.05cm', count: '95%', time: '40%', comment: '备注1' },
+      { id: '5', name: '样本5', width: '34cm', height: '16cm', count: '16%', time: '30%', comment: '备注1' },
+      { id: '6', name: '样本6', width: '34cm', height: '16cm', count: '16%', time: '30%', comment: '备注1' },
+      { id: '7', name: '样本7', width: '34cm', height: '16cm', count: '16%', time: '30%', comment: '备注1' }
     ]
     this.lineData = [
       { name: '树径初始值', type: 'line', stack: 'Total', data: [120, 132, 101, 134, 90, 230, 210],

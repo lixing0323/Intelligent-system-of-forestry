@@ -7,6 +7,7 @@
 
 body {
   height: 100%;
+  background-color: $--background-color;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -20,6 +21,7 @@ label {
 html {
   height: 100%;
   box-sizing: border-box;
+  background-color: $--background-color;
 }
 
 #app {
