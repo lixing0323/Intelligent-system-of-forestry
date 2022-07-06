@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       playerOptions: {
+        id: 'live',
         // videojs and plugin options
         height: '225',
         width: '400',

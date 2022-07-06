@@ -2,7 +2,7 @@
   <div class="player">
     <video-player
       ref="videoPlayer"
-      class="video-player"
+      class="video-player vjs-custom-skin"
       :options="playerOptions"
       :playsinline="true"
     />
@@ -19,6 +19,7 @@ export default {
   data() {
     return {
       playerOptions: {
+        id: 'video',
         // videojs options
         height: '225',
         width: '400',

@@ -1,5 +1,5 @@
 <template>
-  <div class="video-container vjs-custom-skin">
+  <div class="video-container">
     <div class="live"><live-content /></div>
 
     <div class="video"><video-content /></div>
@@ -31,6 +31,7 @@ export default {
   top: 100px;
   display: block;
   right: 3%;
+  width: 400px;
   .video {
     margin-top: 20px;
   }
