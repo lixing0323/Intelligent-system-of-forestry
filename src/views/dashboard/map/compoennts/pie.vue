@@ -22,6 +22,14 @@ export default {
     id: {
       type: [Number, String],
       default: undefined
+    },
+    width: {
+      type: Number,
+      default: 420
+    },
+    height: {
+      type: Number,
+      default: 300
     }
   },
   data() {
@@ -32,8 +40,8 @@ export default {
   computed: {
     styleObject() {
       return {
-        width: '420px',
-        height: '300px'
+        width: `${this.width}px`,
+        height: `${this.height}px`
       }
     }
   },

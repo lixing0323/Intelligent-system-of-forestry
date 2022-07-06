@@ -1,17 +1,20 @@
 <template>
-  <video-player
-    ref="videoPlayer"
-    class="video-player-box"
-    :options="playerOptions"
-    :playsinline="true"
-    @play="onPlayerPlay($event)"
-    @pause="onPlayerPause($event)"
-    @statechanged="playerStateChanged($event)"
-    @ready="playerReadied"
-  />
+  <div class="player">
+    <video-player
+      ref="videoPlayer"
+      class="video-player-box"
+      :options="playerOptions"
+      :playsinline="true"
+      @play="onPlayerPlay($event)"
+      @pause="onPlayerPause($event)"
+      @statechanged="playerStateChanged($event)"
+      @ready="playerReadied"
+    />
+  </div>
 </template>
 
 <script>
+
 export default {
   components: { },
   props: {
@@ -58,7 +61,6 @@ export default {
 
     // player is ready
     playerReadied(player) {
-      console.log('the player is readied', player)
       // you can use it to do something...
       // player.[methods]
     }

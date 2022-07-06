@@ -11,7 +11,7 @@
     <left-top-card />
     <right-top-card />
     <left-bottom-card :data="plot" />
-    <middle-top-card :show-bar="false" :show-statistics="false" title="渭南市澄城县" />
+    <middle-top-card :show-bar="false" title="渭南市澄城县" />
     <middle-bottom-card />
     <right-bottom-card />
   </div>
@@ -43,8 +43,9 @@ export default {
       height: document.documentElement.clientHeight - 5,
       plot: {},
       markers: [],
-      groups: [ { longitude: '109.878939',  latitude: '35.207467'  },
+      groups: [ { longitude: '109.912077',  latitude: '35.200365'  },
         { longitude: '109.847696',  latitude: '35.175061'  },
+        { longitude: '109.771244',  latitude: '35.16557'  },
         { longitude: '109.983137',  latitude: '35.176744'  }]
     }
   },
