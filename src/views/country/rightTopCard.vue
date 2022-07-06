@@ -28,13 +28,11 @@ export default {
 <style scoped lang="scss">
 .video-container {
   position: absolute;
-  top: 200px;
-  right: 10%;
-  left: 10%;
-  display: flex;
-  flex-wrap: nowrap;
+  top: 120px;
+  display: block;
+  right: 3%;
   .video {
-    margin-left: 200px;
+    margin-top: 20px;
   }
 }
 

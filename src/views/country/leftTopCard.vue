@@ -13,7 +13,7 @@ export default {
   components: { },
   data() {
     return {
-      tabs: ['样本1', '样本2', '样本3', '样本4']
+      tabs: ['样地1', '样地2', '样地3', '样地4']
     }
   },
   created() {

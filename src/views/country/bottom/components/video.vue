@@ -20,7 +20,8 @@ export default {
     return {
       playerOptions: {
         // videojs options
-        height: '360',
+        height: '225',
+        width: '400',
         autoplay: true,
         muted: true,
         language: 'en',

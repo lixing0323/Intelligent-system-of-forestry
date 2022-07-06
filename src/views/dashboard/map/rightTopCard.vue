@@ -6,9 +6,9 @@
       <div class="title">总面积及总碳储量</div>
       <div class="rectangle-flex">
         <div class="item"><rectangle :title="'林地面积/碳储'" :area="1247.6" :weight="2034.26" /></div>
-        <div class="item"> <rectangle :title="'草原面积/碳储'" :area="222.87" :weight="479.37" /></div>
+        <div class="item right"> <rectangle :title="'草原面积/碳储'" :area="222.87" :weight="479.37" /></div>
         <div class="item top"><rectangle :title="'湿地面积/碳储'" :area="280.27" :weight="2453.7" /></div>
-        <div class="item top"><rectangle :title="'荒漠面积/碳储'" :area="30.85" :weight="0.57" /></div>
+        <div class="item top right"><rectangle :title="'荒漠面积/碳储'" :area="30.85" :weight="0.57" /></div>
       </div>
     </template>
   </div>
@@ -63,13 +63,14 @@ export default {
       flex-wrap: wrap;
       .item {
         margin-top: 20px;
-        width: 210px;
-        margin-left: 10px;
-        margin-right: 10px;
+        width: 220px;
         vertical-align: middle;
       }
+      .right {
+        margin-left: 20px;
+      }
       .top {
-        margin-top: 30px;
+        margin-top: 20px;
       }
     }
   }

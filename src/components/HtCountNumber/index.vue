@@ -11,6 +11,10 @@ export default {
     duration: {
       type: Number,
       default: 3600
+    },
+    decimals: {
+      type: Number,
+      default: 2
     }
   }
 }

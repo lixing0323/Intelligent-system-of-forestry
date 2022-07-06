@@ -119,7 +119,7 @@ export default {
   data() {
     return {
       hotImage: TreeImg,
-      width: document.documentElement.clientWidth / 4 + 60
+      width: document.documentElement.clientWidth / 4 + 70
     }
   },
   created() {
@@ -145,7 +145,7 @@ export default {
    padding: 20px;
  }
   .title {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
     .bt {
@@ -155,7 +155,6 @@ export default {
   .icon-flex {
     display: flex;
     flex-wrap: nowrap;
-    margin-top: 5px;
     width: 100%;
     .img-dev {
       text-align: center;
@@ -168,14 +167,13 @@ export default {
     .table {
       flex-grow: 1;
       width: 100%;
-      margin-left: 5px;
-      font-size:12px;
+      font-size:14px;
       td{
-        height: 18px;
-        line-height: 18px;
+        height: 20px;
+        line-height: 20px;
       }
       th{
-        height: 18px;
+        height: 20px;
       }
       .label {
         background-color: #293342;

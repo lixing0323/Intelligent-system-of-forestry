@@ -6,11 +6,10 @@
         <el-input v-model="listQuery.plot" placeholder="请输入样地区域" class="filter-item" @keyup.enter.native="onSearch" />
         <el-date-picker
           v-model="listQuery.date"
-          class="daterange"
-          placement="bottom-start"
-          type="date"
-          placeholder="选择日期"
-          value-format="yyyy-MM-dd"
+          type="daterange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
           :picker-options="pickerOptions"
         />
         <el-button type="primary" icon="el-icon-search" @click="onSearch">查询</el-button>

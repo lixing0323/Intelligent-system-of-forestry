@@ -2,10 +2,10 @@
   <div class="rectangle">
     <div class="rectangle-title">{{ title }}</div>
     <div class="rectangle-value">
-      <span> <ht-count-number :start-val="0" :end-val="Number(area)" class="number" /></span>
-      <span class="unit">公顷</span>
-      <span>  / <ht-count-number :start-val="0" :end-val="Number(weight)" class="number" /></span>
-      <span class="unit">吨</span>
+      <span> <ht-count-number :start-val="0" :end-val="Number(area)" class="number" :decimals="0" /></span>
+      <span class="unit">万公顷</span>
+      <span>  / <ht-count-number :start-val="0" :end-val="Number(weight)" class="number" :decimals="0" /></span>
+      <span class="unit">百万吨</span>
     </div>
   </div>
 </template>
@@ -42,11 +42,11 @@ export default {
 @import "~@/styles/element-variables.scss";
   .rectangle {
     background-color: #191E2C;
-    width: 200px;
+    width: 220px;
     height: 120px;
 
     .rectangle-title {
-      font-size: 20px;
+      font-size: 18px;
       color: #BEBEBE;
       text-align: center;
       padding-top: 30px;
@@ -55,7 +55,7 @@ export default {
       margin-top: 5px;
       text-align: center;
       .number {
-        font-size: 24px;
+        font-size: 22px;
         color: $--color-font;
         font-weight: bold;
       }

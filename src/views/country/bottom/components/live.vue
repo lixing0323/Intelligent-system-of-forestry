@@ -22,7 +22,8 @@ export default {
     return {
       playerOptions: {
         // videojs and plugin options
-        height: '360',
+        height: '225',
+        width: '400',
         sources: [{
           withCredentials: false,
           type: 'application/x-mpegURL',

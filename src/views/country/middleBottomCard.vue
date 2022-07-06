@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       width: document.documentElement.clientWidth / 3,
-      left: document.documentElement.clientWidth / 3,
+      left: document.documentElement.clientWidth / 3 + 5,
       list: [
         { id: '001', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
         { id: '001', name: 'Platycladus oriental', cn: '侧柏', height: '5.214', width: '5.27' },
@@ -60,7 +60,7 @@ export default {
 }
 
   .title {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
   }

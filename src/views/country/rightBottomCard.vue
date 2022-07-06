@@ -36,7 +36,8 @@ export default {
       { title: '甲烷', value: '0', unit: '%' },
       { title: '二氧化碳', value: '0', unit: 'ppm' },
       { title: '微差压', value: '0', unit: 'kpa' },
-      { title: '信号强度', value: '28', unit: 'RSSI' }
+      { title: '信号强度', value: '85', unit: 'RSSI' },
+      { title: '碳汇量', value: '28', unit: '吨' }
     ]
   },
   methods: {
@@ -57,7 +58,7 @@ export default {
   padding: 20px;
 }
 .title {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
   margin-bottom: 10px;
 }

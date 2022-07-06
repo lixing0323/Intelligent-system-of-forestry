@@ -41,11 +41,16 @@ export default {
     return {
       id: undefined,
       height: document.documentElement.clientHeight - 5,
-      plot: {}
+      plot: {},
+      markers: [],
+      groups: [ { longitude: '109.878939',  latitude: '35.207467'  },
+        { longitude: '109.847696',  latitude: '35.175061'  },
+        { longitude: '109.983137',  latitude: '35.176744'  }]
     }
   },
   mounted() {
     this.createMap()
+    this.setMarkers()
   },
   created() {
     this.id = this.$route.params.id
@@ -58,9 +63,36 @@ export default {
     createMap() {
       map = new AMap.Map('country', {
         mapStyle: "amap://styles/grey",
-        center: [108.947044, 34.58445],
-        zoom: 9
+        center: [109.921104, 35.164237],
+        zoom: 13
       });
+      map.on('click', function(e) {
+        const msg = `经度=${e.lnglat.getLng()}纬度=${e.lnglat.getLat()}`
+        console.log(msg)
+      });
+      map.clearMap();
+    },
+    // 新建多个标记 自定义 image = require('@/assets/map/red.png')
+    setMarkers() {
+      const that = this
+      let infoWindow = new AMap.InfoWindow({isCustom: true, offset: new AMap.Pixel(10, 0)})
+
+      for (let i=0; i<this.groups.length; i++) {
+        const sampling = 1
+        const target = 2
+        const position = [this.groups[i].longitude, this.groups[i].latitude]
+        const country = '区'
+        const street = '街道'
+
+        this.markers[i] = new AMap.Marker({
+          icon: new AMap.Icon({
+            image: require('@/assets/city/flag.png'),
+            size: new AMap.Size(20, 52),
+            imageSize: new AMap.Size(20,52)}),
+          position: position
+        });
+        map.add(this.markers[i]);
+      }
     },
     getData() {
       // 获取样地数据

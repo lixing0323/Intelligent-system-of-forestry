@@ -20,6 +20,10 @@ export default {
     value: {
       type: [Number, String],
       default: undefined
+    },
+    max: {
+      type: Number,
+      default: 100
     }
   },
   data() {
@@ -30,7 +34,7 @@ export default {
   methods: {
     getProgressWidth() {
       if (this.value) {
-        return this.value * this.lineWidth / 20000
+        return this.value * this.lineWidth / this.max
       }
     }
   }
